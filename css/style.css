@@ -22,16 +22,8 @@ body {
 the links ( see 'nav li' ). Used percentage margin to better display text with a narrower window.
 double outline was used to highlight the section. */
 
-nav.resume {
-  background-image: url(./images/city2.png);
-}
-
-nav.courses {
-  background-image: url(./images/city3.png);
-}
 
 nav {
-  background-image: url(./images/city.png);
   background-size: cover;
   background-position: 0% 75%;
   text-align: left;
