@@ -1,0 +1,264 @@
+/* Styling for the whole body. Used background color and font family to generalize the page */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+body {
+  background-color: #ffffff;
+  font-family:'Open Sans', sans-serif;;
+  padding: 0;
+  min-height: 110vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+
+
+/* Styling for the nac section right on top. Had a very hard time discovering how to horizontally align
+the links ( see 'nav li' ). Used percentage margin to better display text with a narrower window.
+double outline was used to highlight the section. */
+
+nav.resume {
+  background-image: url(/images/city2.png);
+}
+
+nav.courses {
+  background-image: url(/images/city3.png);
+}
+
+nav {
+  background-image: url(/images/city.png);
+  background-size: cover;
+  background-position: 0% 75%;
+  text-align: left;
+  padding:1em;
+  padding-top: 13em;
+  padding-bottom: 2em;
+  z-index: 1000;
+  border-bottom: 2px solid white;
+}
+
+nav li {
+  font-family: 'Open Sans', sans-serif;
+  font-size: larger;
+  display: inline-block;
+}
+
+/* List-style:none made the bullet point from our unordered list go away */
+ul {
+  list-style: none;
+}
+span {
+  color: rgba(70, 70, 70, 0.5);
+  mix-blend-mode:hard-light;
+}
+/* This gave styling to the links proper. Padding and margins were used to give them breathing space. */
+a {
+  font-family: 'Open Sans', sans-serif;
+  text-align: left;
+  text-decoration: none;
+  background-color: white;
+  color: #3A506B;
+  padding: 0.5em 0.5em;
+  border: 1px solid white;
+  border-bottom: 0px solid black;
+  border-radius: 0px;
+}
+
+
+
+img#picture {
+  width: 300px;
+}
+
+a:hover {
+  background-color: #3b3b3b;
+  color: #ffffff;
+}
+
+/* To override the body font, h1 styling was used for the titles */
+h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  color: black;
+}
+
+div.bodyMiddle {
+  position: relative;
+  background-color: rgb(255, 255, 255);
+  margin-left: 4.5em;
+  margin: 2em;
+  padding-top: 0;
+  padding: 1em;
+  color: black;
+  height: fit-content;
+  margin-bottom: 0;
+}
+
+div.level {
+  font-family:  'Open Sans', sans-serif;
+  font-size: 2em;
+  font-weight: 100;
+  border-left: 5px solid #3A506B;
+  margin-left: 3em;
+  padding-left: 1em;
+}
+
+/* Stuling for the text inside #mainsection */
+div.bodyMiddle p {
+  padding-top: 1em;
+}
+
+div#objective {
+  padding: 1em;
+}
+
+div#objective p {
+  padding: 0em 1em;
+}
+
+div#workXp {
+  margin-top: 1em;
+  padding: 0em 0em;
+}
+
+/* As h1, h2 also was styled to be different from the default body font */
+h2 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  color: black;
+}
+
+h3 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 250;
+}
+
+h4 { 
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 100;
+  padding-left: 1em;
+}
+
+p {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 100;
+}
+
+
+/* The footer styling was a puzzle. The inline display gave me very bad bugs on the text. The
+solution was to use inline-flex as the display. Border radius was used to round the corners of the block */
+footer {
+  background-size: cover;
+  background-position: 0% 75%;
+  color: white;
+  border-top: 20px solid white;
+  margin-top: auto;
+  font-style: italic;
+  background-image:url(/images/city4.png);
+  background-position: 50% 50%;
+  padding: 1em;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-bottom: 5em;
+}
+
+
+
+
+div.mainHead {
+  display: inline;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 100;
+  margin: 2em;
+  padding: 2em;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.rounded.float-start {
+  margin: 1em;
+  margin-top: 0;
+
+}
+
+.rounded.float-end {
+  margin: 1em;
+  margin-top: 0;
+
+}
+
+div.main {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 100;
+  padding: 2em;
+  margin: 2em;
+}
+
+
+div.mainHead form {
+  display: inline;
+  text-align: center;
+  font-size: large;
+
+}
+
+select {
+  padding: 0.5em;
+  font-size: large;
+}
+
+input {
+  padding: 0.5em;
+  font-size: large;
+}
+
+div#educationHead {
+  padding-top: 1em;
+}
+
+div.main img {
+  width: 200px;
+}
+
+div.head{
+  padding: 1em 1em;
+}
+
+div.head p {
+  padding: 0em 1em;
+}
+
+div.xp {
+  padding: 0em 1em;
+}
+
+div.xp p {
+  padding: 0em 1em ;
+
+
+}
+
+h4 {
+  font-weight: 100;
+}
+
+
+/* Styling for the list items inside #mainsection */
+#mainsection li {
+  color: antiquewhite;
+}
+
+#demoreel {
+  position: relative;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
