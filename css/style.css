@@ -23,15 +23,15 @@ the links ( see 'nav li' ). Used percentage margin to better display text with a
 double outline was used to highlight the section. */
 
 nav.resume {
-  background-image: url(./images/city2.png);
+  background-image: url(/images/city2.png);
 }
 
 nav.courses {
-  background-image: url(./images/city3.png);
+  background-image: url(/images/city3.png);
 }
 
 nav {
-  background-image: url(./images/city.png);
+  background-image: url(/images/city.png);
   background-size: cover;
   background-position: 0% 75%;
   text-align: left;
@@ -159,7 +159,7 @@ footer {
   border-top: 20px solid white;
   margin-top: auto;
   font-style: italic;
-  background-image:url(./images/city4.png);
+  background-image:url(/images/city4.png);
   background-position: 50% 50%;
   padding: 1em;
   padding-left: 2em;
@@ -254,11 +254,21 @@ h4 {
   color: antiquewhite;
 }
 
-#demoreel {
+.demoreel {
+  width: 100%;
+
+}
+
+#video {
   position: relative;
-  right: 0;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+}
+
+#video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  z-index: -2;
 }
