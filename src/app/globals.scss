@@ -1,0 +1,41 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+/* Reset and Base Styles */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family-base);
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--white);
+  background-image: url('/assets/white-space-addition.jpg');
+  background-size: auto;
+  background-position: center;
+}
+
+/* Focus styles for accessibility */
+a:focus,
+button:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Image loading states */
+img {
+  transition: opacity 0.3s ease;
+
+  &[src=""] {
+    opacity: 0;
+  }
+}

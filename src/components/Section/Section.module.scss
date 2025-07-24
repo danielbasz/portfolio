@@ -1,0 +1,81 @@
+@use '../../styles/mixins' as *;
+
+.section {
+  @include section-padding;
+
+  &.light {
+    background-color: var(--background-light);
+  }
+
+  &.white {
+    background-color: var(--white);
+  }
+}
+
+.container {
+  @include container;
+}
+
+.sectionHeader {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 60px;
+  align-items: center;
+  margin-bottom: 80px;
+
+  @include tablet {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 30px;
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr !important;
+    
+    .sectionImage,
+    .headerImage {
+      display: none !important;
+    }
+  }
+}
+
+.sectionTitle {
+  h2 {
+    font-size: var(--font-size-section);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+
+    @include tablet {
+      font-size: 2rem;
+    }
+
+    @include mobile {
+      font-size: 1.75rem;
+    }
+  }
+
+  p {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    font-weight: 300;
+  }
+}
+
+.sectionImage {
+  justify-self: end;
+}
+
+.headerImage {
+  width: 100px;
+  height: 100px;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.projectsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}

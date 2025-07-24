@@ -1,0 +1,49 @@
+@use '../../styles/mixins' as *;
+
+.footer {
+  background: var(--text-color);
+  color: white;
+  padding: 60px 0 40px;
+  text-align: center;
+}
+
+.container {
+  @include container;
+  
+  & {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  @include tablet {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  @include mobile {
+    padding: 0 16px;
+  }
+}
+
+.footerLinks {
+  display: flex;
+  gap: 2rem;
+  
+  @include tablet {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    
+    &:hover {
+      color: white;
+    }
+  }
+}

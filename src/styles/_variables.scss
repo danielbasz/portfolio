@@ -1,32 +1,45 @@
-// SCSS Variables and Design Tokens
 :root {
   // Colors
-  --primary-color: #007bff;
-  --secondary-color: #6c757d;
-  --background-color: #ffffff;
-  --text-color: #333333;
-  --border-color: #e9ecef;
-  
+  --primary-color: #667eea;
+  --secondary-color: #764ba2;
+  --text-color: #2c3e50;
+  --text-muted: #6c757d;
+  --background-light: #f8f9fa;
+  --white: #ffffff;
+  --shadow-light: rgba(0, 0, 0, 0.08);
+  --shadow-hover: rgba(0, 0, 0, 0.12);
+
   // Typography
-  --font-family-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-size-hero: 4rem;
+  --font-size-section: 3rem;
+  --font-size-subtitle: 1.5rem;
   --font-size-base: 1rem;
-  --font-size-lg: 1.25rem;
-  --font-size-xl: 1.5rem;
-  
+  --font-size-small: 0.875rem;
+
   // Spacing
-  --spacing-xs: 0.5rem;
-  --spacing-sm: 1rem;
-  --spacing-md: 1.5rem;
-  --spacing-lg: 2rem;
-  --spacing-xl: 3rem;
-  
+  --container-max-width: 1200px;
+  --section-padding: 100px;
+  --card-padding: 32px;
+  --grid-gap: 40px;
+
+  // Border radius
+  --border-radius-card: 20px;
+  --border-radius-button: 50px;
+  --border-radius-tag: 20px;
+
   // Breakpoints
-  --breakpoint-mobile: 768px;
-  --breakpoint-tablet: 1024px;
+  --breakpoint-mobile: 480px;
+  --breakpoint-tablet: 768px;
   --breakpoint-desktop: 1200px;
-  
+
+  // Transitions
+  --transition-base: all 0.3s ease;
+
   // Shadows
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --shadow-card-hover: 0 20px 40px rgba(0, 0, 0, 0.12);
 }

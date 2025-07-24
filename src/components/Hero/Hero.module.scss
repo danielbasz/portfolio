@@ -1,0 +1,148 @@
+@use '../../styles/mixins' as *;
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: white;
+  @include gradient-overlay;
+
+  @include mobile {
+    min-height: 80vh;
+  }
+}
+
+.container {
+  @include container;
+}
+
+.heroContent {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+
+  @include tablet {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 40px;
+  }
+}
+
+.heroText {
+  h1 {
+    font-size: var(--font-size-hero);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+
+    @include mobile {
+      font-size: 2rem;
+    }
+
+mark {
+      background-color: white;
+      color: black;
+    }
+  }
+}
+
+.subtitle {
+  font-size: var(--font-size-subtitle);
+  font-weight: 300;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.bio {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  margin-bottom: 3rem;
+  opacity: 0.8;
+  max-width: 500px;
+}
+
+.contactLinks {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.contactRow {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+
+  @include tablet {
+    justify-content: center;
+  }
+}
+
+.separator {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.socialLinksInline {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.btnPrimary {
+  @include button-primary;
+}
+
+.socialLink {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition-base);
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: width 0.3s ease;
+  }
+
+  &:hover {
+    color: white;
+    transform: translateY(-1px);
+
+    &::after {
+      width: 100%;
+    }
+  }
+
+  @include focus-outline;
+}
+
+.profileImageWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.profilePhoto {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 6px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+
+  @include mobile {
+    width: 200px;
+    height: 200px;
+  }
+}

@@ -1,24 +1,33 @@
 # Implementation Plan
 
 - [x] 1. Set up Next.js project foundation
-  - Initialize Next.js 14+ project with TypeScript and App Router
+  - Initialize Next.js 15+ project with TypeScript and App Router
   - Configure project structure with proper directories (app, lib, public, styles)
-  - Set up basic configuration files (next.config.js, tsconfig.json, package.json)
+  - Set up basic configuration files (next.config.ts, tsconfig.json, package.json)
   - Install necessary dependencies for styling and development
+  - Configure static export for deployment
   - _Requirements: 2.1, 4.1, 4.2_
 
-- [ ] 2. Create TypeScript interfaces and data structures
+- [x] 2. Create TypeScript interfaces and data structures
   - Define unified Experience interface in lib/types.ts
   - Create PersonalInfo, SocialLink, and PortfolioData interfaces
   - Set up data.ts file with structured content from current portfolio
-  - Add education data based on Daniel's CV information
+  - Add basic portfolio data structure with placeholders
   - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 4.3_
 
-- [ ] 3. Implement root layout and global styles
-  - Create app/layout.tsx with proper HTML structure and metadata
-  - Convert current styles.css to Next.js compatible global styles
-  - Set up SEO metadata including title, description, and Open Graph tags
-  - Configure font optimization and basic responsive setup
+- [ ] 2.1. Populate data structures with actual portfolio content
+  - Add complete work experience data (CRA, Globo, Andarilho Filmes)
+  - Add education data based on Daniel's CV information
+  - Include all technology tags and descriptions
+  - Add proper social links and contact information
+  - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 3.1_
+
+- [ ] 3. Update root layout and implement portfolio-specific global styles
+  - Update app/layout.tsx metadata with Daniel's portfolio information
+  - Replace Tailwind CSS with SCSS modules as per tech stack requirements
+  - Convert original portfolio styles.css to Next.js compatible SCSS global styles
+  - Set up proper SEO metadata including title, description, and Open Graph tags
+  - Configure proper font loading for portfolio design
   - _Requirements: 2.2, 2.5, 5.4_
 
 - [ ] 4. Build Hero section component
@@ -83,8 +92,8 @@
   - Test image loading and optimization performance
   - _Requirements: 5.1, 5.2, 5.4_
 
-- [ ] 12. Configure static export and deployment
-  - Set up next.config.js for static export compatibility
+- [x] 12. Configure static export and deployment
+  - Set up next.config.ts for static export compatibility
   - Configure build process for static hosting (GitHub Pages, Netlify, Vercel)
   - Test static export generation and verify all assets are included
   - Create deployment documentation and scripts
