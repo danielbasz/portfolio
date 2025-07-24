@@ -40,7 +40,6 @@ export default function Home() {
         title="Multimedia"
         description="Creative projects spanning video, audio, and digital art"
         headerImage="/assets/slate.webp"
-        backgroundColor="white"
       >
         {portfolioData.work
           .filter(work => ['Globo TV', 'Andarilho Filmes'].includes(work.organization))
