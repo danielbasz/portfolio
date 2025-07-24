@@ -6,9 +6,6 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true // Required for static export
   },
-  // GitHub Pages requires assets to be served from the repo sub-path
-  basePath: '/portfolio-nextjs',
-  assetPrefix: '/portfolio-nextjs',
   // Enable SCSS support
   sassOptions: {
     includePaths: ['./src/styles'],
