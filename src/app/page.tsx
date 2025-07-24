@@ -17,41 +17,28 @@ export default function Home() {
         resumeUrl={CONTACT.RESUME_URL}
       />
       
-      {/* Development Section */}
-      <Section
-        title="Development"
-        description="Full-stack projects and technical solutions"
-        headerImage="/assets/assets_task_01k0qecz8sf77agbqwdszf930z_1753133555_img_1.webp"
-        backgroundColor="light"
-      >
-        {portfolioData.work
-          .filter(work => work.organization === 'Canada Revenue Agency')
-          .map((work) => (
-            <ExperienceCard
-              key={work.id}
-              experience={work}
-            />
-          ))
-        }
-      </Section>
-      
-      {/* Multimedia Section */}
-      <Section
-        title="Multimedia"
-        description="Creative projects spanning video, audio, and digital art"
-        headerImage="/assets/slate.webp"
-      >
-        {portfolioData.work
-          .filter(work => ['Globo TV', 'Andarilho Filmes'].includes(work.organization))
-          .map((work) => (
+      {/* Work Section - Combined with transitioning background */}
+      <div style={{
+        background: 'linear-gradient(to bottom, var(--background-light) 0%, var(--background-light) 60%, var(--white) 100%)',
+        position: 'relative'
+      }}>
+        <Section
+          title="Work"
+          description="Professional experience spanning development and multimedia"
+          headerImages={[
+            "/assets/assets_task_01k0qecz8sf77agbqwdszf930z_1753133555_img_1.webp",
+            "/assets/slate.webp"
+          ]}
+        >
+          {portfolioData.work.map((work) => (
             <ExperienceCard
               key={work.id}
               experience={work}
               className={work.organization === 'Globo TV' ? 'globoCard' : ''}
             />
-          ))
-        }
-      </Section>
+          ))}
+        </Section>
+      </div>
       
       <Footer
         socialLinks={portfolioData.socialLinks}

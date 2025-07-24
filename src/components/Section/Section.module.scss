@@ -32,7 +32,7 @@
   @include mobile {
     grid-template-columns: 1fr !important;
     
-    .sectionImage,
+    .sectionImages,
     .headerImage {
       display: none !important;
     }
@@ -62,8 +62,11 @@
   }
 }
 
-.sectionImage {
+.sectionImages {
   justify-self: end;
+  display: flex;
+  gap: 20px;
+  align-items: center;
 }
 
 .headerImage {

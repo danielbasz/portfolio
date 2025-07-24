@@ -7,7 +7,7 @@ import styles from './Section.module.scss';
 export default function Section({
   title,
   description,
-  headerImage,
+  headerImages,
   children,
   className = '',
   backgroundColor = 'white'
@@ -20,15 +20,18 @@ export default function Section({
             <h2>{title}</h2>
             {description && <p>{description}</p>}
           </div>
-          {headerImage && (
-            <div className={styles.sectionImage}>
-              <Image
-                src={headerImage}
-                alt={`${title} work`}
-                width={100}
-                height={100}
-                className={styles.headerImage}
-              />
+          {headerImages && headerImages.length > 0 && (
+            <div className={styles.sectionImages}>
+              {headerImages.map((image, index) => (
+                <Image
+                  key={index}
+                  src={image}
+                  alt={`${title} work ${index + 1}`}
+                  width={100}
+                  height={100}
+                  className={styles.headerImage}
+                />
+              ))}
             </div>
           )}
         </div>

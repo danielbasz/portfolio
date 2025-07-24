@@ -50,7 +50,7 @@ export interface HeroProps {
 export interface SectionProps {
   title: string;
   description?: string;
-  headerImage?: string;
+  headerImages?: string[]; // Support multiple header images
   children: React.ReactNode;
   className?: string;
   backgroundColor?: 'light' | 'white';
