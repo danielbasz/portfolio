@@ -10,7 +10,7 @@ export const APP_URL = 'https://danielporto.dev'; // Update with actual URL
 // Contact Information
 export const CONTACT = {
   EMAIL: 'danielbassporto@gmail.com',
-  RESUME_URL: '/assets/daniel-porto-resume.pdf' // Update with actual path
+  RESUME_URL: 'assets/daniel-porto-resume.pdf' // Update with actual path
 } as const;
 
 // Social Media Platform Constants
@@ -65,7 +65,7 @@ export const ANIMATIONS = {
 
 // Asset Paths
 export const ASSETS = {
-  IMAGES: '/assets/',
-  ICONS: '/icons/',
-  DOCUMENTS: '/documents/'
+  IMAGES: 'assets/',
+  ICONS: 'icons/',
+  DOCUMENTS: 'documents/'
 } as const;

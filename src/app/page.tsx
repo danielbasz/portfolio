@@ -26,8 +26,8 @@ export default function Home() {
           title="Work"
           description="Professional experience spanning development and multimedia"
           headerImages={[
-            "/assets/assets_task_01k0qecz8sf77agbqwdszf930z_1753133555_img_1.webp",
-            "/assets/slate.webp"
+            "assets/assets_task_01k0qecz8sf77agbqwdszf930z_1753133555_img_1.webp",
+            "assets/slate.webp"
           ]}
         >
           {portfolioData.work.map((work) => (
@@ -39,6 +39,20 @@ export default function Home() {
           ))}
         </Section>
       </div>
+
+      {/* Education Section */}
+      <Section
+        title="Education"
+        description="Academic foundation and continuous learning journey"
+        backgroundColor="white"
+      >
+        {portfolioData.education.filter(entry => entry.type === 'education').map((education) => (
+          <ExperienceCard
+            key={education.id}
+            experience={education}
+          />
+        ))}
+      </Section>
       
       <Footer
         socialLinks={portfolioData.socialLinks}

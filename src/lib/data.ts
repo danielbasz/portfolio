@@ -7,7 +7,7 @@ export const portfolioData: PortfolioData = {
     title: "Full Stack Software Developer & Multimedia Specialist",
     bio: "Passionate in bridging technology and art through code and creative media.",
     email: "danielbassporto@gmail.com",
-    profileImage: "/assets/profile-picture.jpg"
+    profileImage: "assets/profile-picture.jpg"
   },
   socialLinks: [
     {
@@ -30,7 +30,7 @@ export const portfolioData: PortfolioData = {
       location: "Ottawa, ON",
       description: "Modernized legacy tax auditing systems, driving digital transformation and improved government service. Developed and maintained enterprise web applications using Angular frontend and Java backend. Championed Agile, CI/CD, and DevOps best practices, leading to faster, more reliable deployments.",
       tags: ["Java", "Maven", "Angular", "SQL", "Playwright", "JUnit", "Jasmine", "Microsoft 365"],
-      image: "/assets/cra-logo.png",
+      image: "assets/cra-logo.png",
       type: "work"
     },
     {
@@ -41,7 +41,7 @@ export const portfolioData: PortfolioData = {
       location: "Ottawa, ON",
       description: "Contributed to development of legacy tax auditing systems using Java Weblogic and Swing. Developed RESTful APIs and backend services for critical tax processing operations. Created and maintained JUnit test cases to ensure high code quality.",
       tags: ["Java", "Maven", "Swing", "JUnit", "SQL", "Microsoft 365"],
-      image: "/assets/cra-logo.png",
+      image: "assets/cra-logo.png",
       type: "work"
     },
     {
@@ -52,7 +52,7 @@ export const portfolioData: PortfolioData = {
       location: "Rio de Janeiro, Brazil",
       description: "Developed Python and JavaScript automation tools for high-volume short-form video content at a leading broadcast network. Engineered reusable templates in Adobe Premiere and After Effects, enhancing production efficiency. Reduced daily production time from 40 to 6 minutes through automation.",
       tags: ["Python", "JavaScript", "Adobe Premiere", "After Effects", "Automation"],
-      image: "/assets/globo-logo.jpg",
+      image: "assets/globo-logo.jpg",
       type: "work"
     },
     {
@@ -63,7 +63,7 @@ export const portfolioData: PortfolioData = {
       location: "Rio de Janeiro, Brazil",
       description: "Edited and adapted broadcast series and feature films under tight deadlines. Optimized longer media content for diverse broadcast timeslots to ensure continuous programming. Spearheaded editing for Globoplay original content, reimagining TV shows for online media.",
       tags: ["Video Editing", "Broadcast", "Media Management", "Post-Production"],
-      image: "/assets/globo-logo.jpg",
+      image: "assets/globo-logo.jpg",
       type: "work"
     },
     {
@@ -74,7 +74,7 @@ export const portfolioData: PortfolioData = {
       location: "Rio de Janeiro, Brazil",
       description: "Co-founded and led a film production company, managing creative, technical, and business operations. Directed editing and cinematography, delivering high-quality content for diverse projects. Managed IT and equipment infrastructure, optimizing efficiency and resource allocation.",
       tags: ["Film Production", "Cinematography", "Creative Direction", "Business Management", "IT Management"],
-      image: "/assets/andarilho-logo.png",
+      image: "assets/andarilho-logo.png",
       type: "work"
     }
   ],
@@ -87,6 +87,7 @@ export const portfolioData: PortfolioData = {
       location: "Ottawa, ON",
       description: "Java OOP, Database Systems, Web Development, Data Analysis, Technical Writing. Dean's Honours List (GPA 3.5-4.0).",
       tags: ["Java", "OOP", "Database Systems", "Web Development", "Data Analysis", "Technical Writing"],
+      image: "assets/algonquin.jpg",
       status: "completed",
       type: "education"
     },
@@ -98,6 +99,19 @@ export const portfolioData: PortfolioData = {
       location: "Curitiba, Brazil",
       description: "Advertising, Marketing, Digital Media, Film Production.",
       tags: ["Advertising", "Marketing", "Digital Media", "Film Production"],
+      image: "assets/pucpr.png",
+      status: "completed",
+      type: "education"
+    },
+    {
+      id: "pucpr-graphic-design",
+      title: "Graphic Design B.A.",
+      organization: "PUCPR",
+      period: "Feb 2004 - Feb 2005",
+      location: "Curitiba, Brazil",
+      description: "Art history, color theory, design and composition principles, digital media.",
+      tags: ["Art History", "Color Theory", "Design Principles", "Composition", "Digital Media"],
+      image: "assets/pucpr.png",
       status: "completed",
       type: "education"
     },
@@ -109,6 +123,7 @@ export const portfolioData: PortfolioData = {
       location: "Rio de Janeiro, Brazil",
       description: "Introduction to C Programming, Data Structures and Algorithms.",
       tags: ["C Programming", "Data Structures", "Algorithms"],
+      image: "assets/puc-rio-logo-png_seeklogo-234369.png",
       status: "incomplete",
       type: "education"
     },

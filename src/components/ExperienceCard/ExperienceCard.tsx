@@ -17,30 +17,23 @@ export default function ExperienceCard({ experience, className = '' }: Experienc
     const card = cardRef.current;
     if (!card) return;
 
-    const handleMouseEnter = () => {
-      // Add the scale effect like in v1 portfolio
-      if (card.style.transform) {
-        card.style.transform += ' scale(1.02)';
-      } else {
-        card.style.transform = 'scale(1.02)';
-      }
-    };
+    // Initial animation - slide up when card appears
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            card.classList.add(styles.visible);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
 
-    const handleMouseLeave = () => {
-      // Remove the scale effect
-      if (card.style.transform) {
-        card.style.transform = card.style.transform.replace(' scale(1.02)', '');
-      }
-    };
+    observer.observe(card);
 
-    card.addEventListener('mouseenter', handleMouseEnter);
-    card.addEventListener('mouseleave', handleMouseLeave);
-
-    return () => {
-      card.removeEventListener('mouseenter', handleMouseEnter);
-      card.removeEventListener('mouseleave', handleMouseLeave);
-    };
+    return () => observer.disconnect();
   }, []);
+
   const {
     title,
     organization,

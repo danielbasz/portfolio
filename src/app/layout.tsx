@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/assets/profile-picture.jpg",
+        url: "assets/profile-picture.jpg",
         width: 1200,
         height: 630,
         alt: "Daniel Porto - Full Stack Developer",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Daniel Porto - Developer & Multimedia Specialist",
     description: "Full Stack Software Developer & Multimedia Specialist passionate in bridging technology and art through code and creative media.",
-    images: ["/assets/profile-picture.jpg"],
+    images: ["assets/profile-picture.jpg"],
   },
   robots: {
     index: true,
@@ -50,8 +50,23 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const isProd = process.env.NODE_ENV === 'production';
+  const assetPrefix = isProd ? '/portfolio-nextjs' : '';
+  
   return (
     <html lang="en">
+      <head>
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            :root {
+              --asset-prefix: '${assetPrefix}';
+            }
+            body {
+              background-image: url('${assetPrefix}/assets/white-space-addition.jpg') !important;
+            }
+          `
+        }} />
+      </head>
       <body>
         {children}
       </body>
