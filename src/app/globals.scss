@@ -1,5 +1,7 @@
 @use '../styles/variables' as *;
 @use '../styles/mixins' as *;
+@use '../styles/utilities' as *;
+@use '../styles/compositions' as *;
 
 /* Reset and Base Styles */
 *,
@@ -19,7 +21,7 @@ body {
   line-height: 1.6;
   color: var(--text-color);
   background-color: var(--white);
-  background-image: url('/assets/white-space-addition.jpg');
+  /* Background image is injected via layout.tsx to respect assetPrefix in prod */
   background-size: auto;
   background-position: center;
 }

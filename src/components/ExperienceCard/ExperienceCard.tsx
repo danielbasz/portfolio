@@ -1,8 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import { useRef, useEffect } from 'react';
 import { Experience } from '../../models';
+import { useIntersectionObserver } from '../../hooks';
 import styles from './ExperienceCard.module.scss';
 
 interface ExperienceCardProps {
@@ -11,28 +11,7 @@ interface ExperienceCardProps {
 }
 
 export default function ExperienceCard({ experience, className = '' }: ExperienceCardProps) {
-  const cardRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const card = cardRef.current;
-    if (!card) return;
-
-    // Initial animation - slide up when card appears
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            card.classList.add(styles.visible);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    observer.observe(card);
-
-    return () => observer.disconnect();
-  }, []);
+  const { ref: cardRef, isVisible } = useIntersectionObserver({ threshold: 0.1 });
 
   const {
     title,
@@ -48,7 +27,7 @@ export default function ExperienceCard({ experience, className = '' }: Experienc
   const additionalClass = className && (styles as Record<string, string>)[className] ? (styles as Record<string, string>)[className] : className;
 
   return (
-    <div ref={cardRef} className={`${styles.projectCard} ${styles.horizontal} ${additionalClass}`}>
+    <div ref={cardRef} className={`${styles.projectCard} ${styles.horizontal} ${additionalClass} ${isVisible ? styles.visible : ''}`}>
       {image && (
         <div className={styles.cardImage}>
           <Image

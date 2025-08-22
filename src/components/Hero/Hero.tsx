@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 import { HeroProps } from '../../models';
+import { useParallax } from '../../hooks';
 import styles from './Hero.module.scss';
 
 export default function Hero({ 
@@ -11,10 +12,11 @@ export default function Hero({
   bio, 
   profileImage, 
   socialLinks, 
-  resumeUrl 
+  resumeUrl,
+  email
 }: HeroProps) {
   const titleRef = useRef<HTMLHeadingElement>(null);
-  const heroSectionRef = useRef<HTMLElement>(null);
+  const heroSectionRef = useParallax({ rate: -0.5 });
 
   useEffect(() => {
     const heroTitle = titleRef.current;
@@ -36,20 +38,6 @@ export default function Hero({
     }
   }, [name]);
 
-  // Parallax scroll effect – replicate behaviour from v1 site
-  useEffect(() => {
-    const heroEl = heroSectionRef.current;
-    if (!heroEl) return;
-
-    const handleScroll = () => {
-      const scrolled = window.pageYOffset;
-      const rate = scrolled * -0.5;
-      heroEl.style.transform = `translateY(${rate}px)`;
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
 <section ref={heroSectionRef} className={styles.hero}>
@@ -64,23 +52,27 @@ export default function Hero({
             
             <div className={styles.contactLinks}>
               <div className={styles.contactRow}>
-                <a href="mailto:danielbassporto@gmail.com" className={styles.btnPrimary}>
+                <a href={`mailto:${email}`} className={styles.btnPrimary}>
                   Get in Touch
                 </a>
-                <span className={styles.separator}>|</span>
-                <div className={styles.socialLinksInline}>
-                  {socialLinks.map((link) => (
-                    <a
-                      key={link.name}
-                      href={link.url}
-                      className={styles.socialLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {link.name}
-                    </a>
-                  ))}
-                </div>
+                {resumeUrl && (
+                  <a href={resumeUrl} className={styles.btnSecondary} target="_blank" rel="noopener noreferrer">
+                    Download Résumé
+                  </a>
+                )}
+              </div>
+              <div className={styles.socialLinksInline}>
+                {socialLinks.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.url}
+                    className={styles.socialLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {link.name}
+                  </a>
+                ))}
               </div>
             </div>
           </div>

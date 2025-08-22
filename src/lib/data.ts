@@ -1,23 +1,25 @@
 // Structured data for the portfolio - real content from version 1
 import { PortfolioData } from '../models';
+import { siteConfig } from '../config/site';
 
 export const portfolioData: PortfolioData = {
+  resumeUrl: siteConfig.contact.resumeUrl,
   personal: {
-    name: "Daniel Porto",
+    name: siteConfig.author.name,
     title: "Full Stack Software Developer & Multimedia Specialist",
-    bio: "Passionate in bridging technology and art through code and creative media.",
-    email: "danielbassporto@gmail.com",
-    profileImage: "assets/profile-picture.jpg"
+    bio: siteConfig.author.bio,
+    email: siteConfig.author.email,
+    profileImage: siteConfig.author.profileImage
   },
   socialLinks: [
     {
       name: "LinkedIn",
-      url: "https://linkedin.com/in/danielbza",
+      url: siteConfig.social.linkedin,
       icon: "linkedin"
     },
     {
       name: "GitHub", 
-      url: "https://github.com/danielbasz",
+      url: siteConfig.social.github,
       icon: "github"
     }
   ],

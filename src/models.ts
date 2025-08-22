@@ -31,6 +31,7 @@ export interface PersonalInfo {
 }
 
 export interface PortfolioData {
+  resumeUrl?: string;
   personal: PersonalInfo;
   socialLinks: SocialLink[];
   work: Experience[];
@@ -44,7 +45,8 @@ export interface HeroProps {
   bio: string;
   profileImage: string;
   socialLinks: SocialLink[];
-  resumeUrl?: string;
+  resumeUrl?: string; // Optional for future resume download feature
+  email: string;
 }
 
 export interface SectionProps {

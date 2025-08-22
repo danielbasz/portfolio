@@ -66,16 +66,16 @@ mark {
 }
 
 .contactLinks {
-  align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .contactRow {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
+  flex-wrap: wrap;
 
   @include tablet {
     justify-content: center;
@@ -91,11 +91,16 @@ mark {
 
 .socialLinksInline {
   display: flex;
-  gap: 1.5rem;
+  gap: 1.25rem;
+  flex-wrap: wrap;
 }
 
 .btnPrimary {
   @include button-primary;
+}
+
+.btnSecondary {
+  @include button-secondary;
 }
 
 .socialLink {

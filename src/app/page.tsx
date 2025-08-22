@@ -1,9 +1,9 @@
 import Hero from '../components/Hero/Hero';
-import Section from '../components/Section/Section';
-import ExperienceCard from '../components/ExperienceCard/ExperienceCard';
 import Footer from '../components/Footer/Footer';
+import { Container } from '../components/ui';
+import { ExperienceSection } from '../components/sections';
 import { portfolioData } from '../lib/data';
-import { CONTACT } from '../constants';
+// import { siteConfig } from '../config/site'; // TODO: Re-import when resume feature is added
 
 export default function Home() {
   return (
@@ -14,45 +14,32 @@ export default function Home() {
         bio={portfolioData.personal.bio}
         profileImage={portfolioData.personal.profileImage}
         socialLinks={portfolioData.socialLinks}
-        resumeUrl={CONTACT.RESUME_URL}
+        resumeUrl={portfolioData.resumeUrl}
+        email={portfolioData.personal.email}
       />
       
       {/* Work Section - Combined with transitioning background */}
-      <div style={{
-        background: 'linear-gradient(to bottom, var(--background-light) 0%, var(--background-light) 60%, var(--white) 100%)',
-        position: 'relative'
-      }}>
-        <Section
+      <Container background="gradient">
+        <ExperienceSection
           title="Work"
           description="Professional experience spanning development and multimedia"
+          experiences={portfolioData.work}
+          type="work"
           headerImages={[
             "assets/assets_task_01k0qecz8sf77agbqwdszf930z_1753133555_img_1.webp",
             "assets/slate.webp"
           ]}
-        >
-          {portfolioData.work.map((work) => (
-            <ExperienceCard
-              key={work.id}
-              experience={work}
-              className={work.organization === 'Globo TV' ? 'globoCard' : ''}
-            />
-          ))}
-        </Section>
-      </div>
+        />
+      </Container>
 
       {/* Education Section */}
-      <Section
+      <ExperienceSection
         title="Education"
         description="Academic foundation and continuous learning journey"
+        experiences={portfolioData.education}
+        type="education"
         backgroundColor="white"
-      >
-        {portfolioData.education.filter(entry => entry.type === 'education').map((education) => (
-          <ExperienceCard
-            key={education.id}
-            experience={education}
-          />
-        ))}
-      </Section>
+      />
       
       <Footer
         socialLinks={portfolioData.socialLinks}
