@@ -53,24 +53,21 @@ This project is migrating content and functionality from the **Version 1 vanilla
 ## 🏗 Project Structure
 
 ```
-portfolio-nextjs/
-├── .github/workflows/         # CI/CD pipeline (planned)
-├── app/                       # Next.js App Router
+portfolio/
+├── .github/workflows/         # CI/CD pipeline (Pages deploy)
+├── src/app/                   # Next.js App Router
 │   ├── layout.tsx            # Root layout with metadata
 │   ├── page.tsx              # Main portfolio page
-│   ├── globals.css           # Global styles
+│   ├── globals.scss          # Global styles
 │   └── components/           # React components
-│       ├── Hero.tsx         # Hero section
-│       ├── Work.tsx         # Work experience
-│       ├── Education.tsx    # Education section (new)
-│       └── Footer.tsx       # Footer component
+│       ├── Hero/             # Hero section
+│       ├── sections/         # Work/Education sections
+│       └── Footer/           # Footer component
 ├── public/assets/            # Static assets (images, logos)
-├── lib/                      # Data structures and utilities
-│   ├── data.ts              # Structured content data
-│   └── types.ts             # TypeScript interfaces
-├── styles/                   # SCSS modules and variables
+├── src/lib/                  # Data structures and utilities
+│   └── data.ts              # Structured content data
+├── src/styles/               # SCSS modules and variables
 ├── .kiro/                    # AI planning documentation
-├── .serena/                  # AI development context
 └── .learning/                # Angular → React learning docs
     ├── README.md
     ├── DEVELOPMENT_DIARY.md  # Daily learning documentation
@@ -180,7 +177,7 @@ Adding comprehensive education background:
 
 ## 🔗 Repository Links
 
-- **Current Project:** [danielbasz/portfolio-nextjs](https://github.com/danielbasz/portfolio-nextjs)
+- **Current Project:** [danielbasz/portfolio](https://github.com/danielbasz/portfolio)
 - **Version 1 Source:** [danielbasz/daniel-portfolio](https://github.com/danielbasz/daniel-portfolio) (vanilla HTML/CSS/JS)
 - **Learning System:** `../learning-documentation-system/` (original framework)
 - **Live Demo:** *Coming soon after migration*

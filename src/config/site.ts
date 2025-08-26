@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Daniel Porto",
   title: "Daniel Porto - Developer & Multimedia Specialist", 
   description: "Full Stack Software Developer & Multimedia Specialist passionate in bridging technology and art through code and creative media.",
-  url: "https://danielbasz.github.io/portfolio-nextjs/",
+  url: "https://danielbasz.github.io/portfolio/",
   
   author: {
     name: "Daniel Porto",
@@ -22,8 +22,8 @@ export const siteConfig = {
   },
 
   deployment: {
-    basePath: "/portfolio-nextjs",
-    assetPrefix: "/portfolio-nextjs"
+    basePath: "/portfolio",
+    assetPrefix: "/portfolio"
   },
 
   seo: {

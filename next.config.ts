@@ -6,8 +6,8 @@ const nextConfig: NextConfig = {
   // Only enable GitHub Pages config in production
   ...(isProd && {
     output: 'export',
-    basePath: '/portfolio-nextjs',
-    assetPrefix: '/portfolio-nextjs',
+    basePath: '/portfolio',
+    assetPrefix: '/portfolio',
     trailingSlash: true,
   }),
   images: {
