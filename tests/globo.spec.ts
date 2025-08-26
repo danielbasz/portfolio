@@ -12,7 +12,6 @@ test('Globo logo bleed debug', async ({ page }) => {
 // Select the first Globo logo by its alt text
   const logo = page.getByRole('img', { name: 'Globo TV' }).first();
   await logo.waitFor({ state: 'visible', timeout: 15000 });
-  await logo.waitFor({ state: 'visible', timeout: 15000 });
 
   // Evaluate computed styles on the element
   const styles = await logo.evaluate(el => {
