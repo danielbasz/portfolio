@@ -3,6 +3,7 @@ import { siteConfig } from "../config/site";
 
 export function generateMetadata(): Metadata {
   return {
+    metadataBase: new URL(siteConfig.url),
     title: siteConfig.title,
     description: siteConfig.description,
     keywords: [...siteConfig.seo.keywords],
