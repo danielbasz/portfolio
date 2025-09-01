@@ -1,20 +1,40 @@
 @use '../../styles/mixins' as *;
 
 .hero {
-  min-height: 100vh;
+  min-height: 85vh;
   display: flex;
   align-items: center;
   background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
   color: white;
+  position: relative;
+  overflow: hidden;
   @include gradient-overlay;
 
   @include mobile {
     min-height: 80vh;
   }
+
+  // Ensure the gradient overlay is above the video but below content
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(var(--primary-rgb), 0.9) 0%,
+      rgba(var(--secondary-rgb), 0.9) 100%
+    );
+    z-index: 1;
+  }
 }
 
 .container {
   @include container;
+  position: relative;
+  z-index: 2; // Above video and overlay
 }
 
 .heroContent {

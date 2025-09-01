@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 import { HeroProps } from '../../models';
 import { useParallax } from '../../hooks';
+import VideoBackground from '../VideoBackground/VideoBackground';
 import styles from './Hero.module.scss';
 
 export default function Hero({ 
@@ -41,6 +42,7 @@ export default function Hero({
 
   return (
 <section ref={heroSectionRef} className={styles.hero}>
+      <VideoBackground videoId="GY0AbSBwP5w" />
       <div className={styles.container}>
         <div className={styles.heroContent}>
           <div className={styles.heroText}>

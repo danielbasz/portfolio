@@ -1,0 +1,91 @@
+@use '../../styles/mixins' as *;
+
+.videoBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0; // Behind content
+  
+  // Add subtle fade-in animation
+  animation: fadeIn 3s ease-in;
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+.videoContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+}
+
+.videoIframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.2);
+  width: 100%;
+  height: 100%;
+  min-width: 120%; // Ensure it covers full width even with scaling
+  min-height: 120%; // Ensure it covers full height even with scaling
+  border: none;
+  pointer-events: none; // Prevent interaction with the video
+  
+  // Maintain aspect ratio while covering the entire container
+  object-fit: cover;
+  
+  @media (min-aspect-ratio: 16/9) {
+    width: 120%;
+    height: auto;
+  }
+  
+  @media (max-aspect-ratio: 16/9) {
+    width: auto;
+    height: 120%;
+  }
+}
+
+.videoOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  pointer-events: none;
+  
+  // Add a subtle texture or pattern if desired
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 2px,
+        rgba(255, 255, 255, 0.01) 2px,
+        rgba(255, 255, 255, 0.01) 4px
+      );
+  }
+}
