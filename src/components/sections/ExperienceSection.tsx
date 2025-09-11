@@ -4,12 +4,19 @@ import { Experience } from '../../models';
 
 interface ExperienceSectionProps {
   title: string;
-  description: string;
+  description?: string;
   experiences: Experience[];
   type: 'work' | 'education';
   headerImages?: string[];
   backgroundColor?: 'light' | 'white';
   className?: string;
+  showHeader?: boolean; // default true; when false, hides the header (title/description/images)
+  sectionZIndex?: number; // optional stacking override for this section
+  // Optional decorative backdrop props
+  backdropText?: string;
+  backdropOffsetY?: number;
+  backdropOffsetPx?: number;
+  backdropRate?: number;
 }
 
 export default function ExperienceSection({
@@ -19,7 +26,13 @@ export default function ExperienceSection({
   type,
   headerImages,
   backgroundColor = 'white',
-  className
+  className,
+  showHeader = true,
+  sectionZIndex,
+  backdropText,
+  backdropOffsetY,
+  backdropOffsetPx,
+  backdropRate,
 }: ExperienceSectionProps) {
   // Filter experiences by type
   const filteredExperiences = experiences.filter(exp => exp.type === type);
@@ -27,10 +40,16 @@ export default function ExperienceSection({
   return (
     <Section
       title={title}
-      description={description}
+      description={description || ''}
       headerImages={headerImages}
       backgroundColor={backgroundColor}
       className={className}
+      hideHeader={!showHeader}
+      zIndex={sectionZIndex}
+      backdropText={backdropText}
+      backdropOffsetY={backdropOffsetY}
+      backdropOffsetPx={backdropOffsetPx}
+      backdropRate={backdropRate}
     >
       {filteredExperiences.map((experience) => (
         <ExperienceCard

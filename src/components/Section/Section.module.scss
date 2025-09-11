@@ -2,6 +2,9 @@
 
 .section {
   @include section-padding;
+  position: relative; // enable absolute-positioned backdrop inside section
+  z-index: 0; // keep the whole section below hero but above page background
+  overflow: visible; // allow backdrop to extend upward under hero if needed
 
   &.light {
     background-color: var(--background-light);
@@ -14,6 +17,13 @@
 
 .container {
   @include container;
+  position: relative; // allow absolute-positioned backdrop to align to container edges
+  // Expose a CSS var matching horizontal padding so backdrop can align right
+  --section-pad-x: 24px;
+
+  @include mobile {
+    --section-pad-x: 16px;
+  }
 }
 
 .sectionHeader {
@@ -81,4 +91,61 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
+}
+
+// Ensure content sits above backdrop
+.sectionHeader,
+.projectsGrid {
+  position: relative;
+  z-index: 0;
+}
+
+// Decorative backdrop word that can sit under the hero and move with parallax
+.backdropWord {
+  position: absolute;
+  // Align to the right edge of the inner container (max-width-centered) plus its padding
+  right: calc(max((100vw - var(--container-max-width)) / 2, 0px) + 24px);
+  left: auto;
+  transform: none;
+  // Fixed size to preserve anchor alignment across viewports
+  font-size: 160px;
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+  color: #000; // black fill as requested
+  // Folder tab styling
+  background-color: white;
+  display: inline-block;
+  padding: 0em 0em 0em 0.1em; // add right padding to avoid clipping 'v'
+  border-bottom: none; // open bottom edge to blend into section top seam
+  box-shadow: 0px 0px 0px  0px rgba(1, 1, 1, 1) inset;
+  paint-order: stroke fill;
+  text-transform: uppercase;
+  pointer-events: none; // ignore mouse events
+  user-select: none;
+  z-index: 0; // stay behind regular content
+  will-change: transform; // hint for smoother parallax
+
+  @media (max-width: var(--breakpoint-mobile)) {
+    right: 16px; // match container mobile padding
+  }
+}
+
+// Gradient-filled text inside the tab
+.backdropText {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+  line-height: 0.9;
+  font-size: inherit;
+  text-transform: uppercase;
+}
+
+// Ensure a visible trailing space (prevents HTML collapsing at line end)
+.backdropText::after {
+  content: "\00a0";
 }

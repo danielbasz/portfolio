@@ -5,6 +5,7 @@ import { useEffect, useRef } from 'react';
 import { HeroProps } from '../../models';
 import { useParallax } from '../../hooks';
 import VideoBackground from '../VideoBackground/VideoBackground';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import styles from './Hero.module.scss';
 
 export default function Hero({ 
@@ -41,7 +42,7 @@ export default function Hero({
 
 
   return (
-<section ref={heroSectionRef} className={styles.hero}>
+<section id="hero" ref={heroSectionRef} className={styles.hero}>
       <VideoBackground videoId="GY0AbSBwP5w" />
       <div className={styles.container}>
         <div className={styles.heroContent}>
@@ -64,17 +65,23 @@ export default function Hero({
                 )}
               </div>
               <div className={styles.socialLinksInline}>
-                {socialLinks.map((link) => (
-                  <a
-                    key={link.name}
-                    href={link.url}
-                    className={styles.socialLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {link.name}
-                  </a>
-                ))}
+                {socialLinks.map((link) => {
+                  const key = (link.icon || link.name).toLowerCase();
+                  const Icon = key.includes('github') ? FaGithub : key.includes('linkedin') ? FaLinkedin : null;
+                  return (
+                    <a
+                      key={link.name}
+                      href={link.url}
+                      className={styles.socialLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={link.name}
+                      title={link.name}
+                    >
+                      {Icon ? <Icon size={24} /> : link.name}
+                    </a>
+                  );
+                })}
               </div>
             </div>
           </div>

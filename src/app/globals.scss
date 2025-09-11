@@ -16,6 +16,10 @@ html {
   scroll-behavior: smooth;
 }
 
+.mainHeaders {
+  z-index: 0;
+}
+
 body {
   font-family: var(--font-family-base);
   line-height: 1.6;
@@ -24,6 +28,11 @@ body {
   /* Background image is injected via layout.tsx to respect assetPrefix in prod */
   background-size: auto;
   background-position: center;
+}
+
+/* A neutral spacer that reveals the body background between sections */
+.section-gap {
+  height: 100px;
 }
 
 /* Focus styles for accessibility */
