@@ -3,6 +3,7 @@ import Footer from '../components/Footer/Footer';
 import { Container } from '../components/ui';
 import { ExperienceSection } from '../components/sections';
 import WorkSections from '../components/sections/WorkSections';
+import EducationSections from '../components/sections/EducationSections';
 import { portfolioData } from '../lib/data';
 // import { siteConfig } from '../config/site'; // TODO: Re-import when resume feature is added
 
@@ -21,15 +22,8 @@ export default function Home() {
       {/* Work Section - Combined with transitioning background */}
       <WorkSections work={portfolioData.work} />
 
-      {/* Education Section */}
-      <ExperienceSection
-        title="Education"
-        experiences={portfolioData.education}
-        type="education"
-        backgroundColor="white"
-        backdropText="EDUCATION"
-        backdropRate={0}
-      />
+      {/* Education Section (same choreography as Work transitions) */}
+      <EducationSections education={portfolioData.education} />
       
       <Footer
         socialLinks={portfolioData.socialLinks}
