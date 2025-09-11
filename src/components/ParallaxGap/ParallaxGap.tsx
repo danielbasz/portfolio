@@ -31,8 +31,8 @@ function ParallaxGapBase({
       style={{ height, marginBottom: `-${overlap}px` }}
       aria-hidden
     >
-      <div ref={backRef as any} className={styles.backLayer} style={{ height: layerHeight }} />
-      <div ref={frontRef as any} className={styles.frontLayer} style={{ height: layerHeight }}>
+      <div ref={backRef} className={styles.backLayer} style={{ height: layerHeight }} />
+      <div ref={frontRef} className={styles.frontLayer} style={{ height: layerHeight }}>
         <div className={styles.edge} />
       </div>
     </div>

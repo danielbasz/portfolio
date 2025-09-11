@@ -16,7 +16,7 @@ export default function WorkSections({ work }: WorkSectionsProps) {
 
   // First Work parallax: accelerates as progress approaches 1 to create the gap
   const firstRate = heroOut ? Math.min(-0.15 - 0.35 * progress, -0.5) : 0; // ramps to ~-0.5
-const firstWrapperRef = useParallaxAnchored({ rate: firstRate, enabled: heroOut, maxUpPx: 300 });
+const firstWrapperRef = useParallaxAnchored<HTMLDivElement>({ rate: firstRate, enabled: heroOut, maxUpPx: 300 });
 
   const cra = useMemo(() => work.filter(e => e.organization === 'Canada Revenue Agency'), [work]);
   const media = useMemo(() => work.filter(e => ['Globo TV', 'Andarilho Filmes'].includes(e.organization)), [work]);
@@ -29,7 +29,7 @@ const firstWrapperRef = useParallaxAnchored({ rate: firstRate, enabled: heroOut,
   return (
     <>
       <Container background="gradient">
-        <div id="dev-wrapper" ref={firstWrapperRef as any} data-first-work style={{ position: 'relative', zIndex: 2 }}>
+<div id="dev-wrapper" ref={firstWrapperRef} data-first-work style={{ position: 'relative', zIndex: 2 }}>
           <ExperienceSection
             title="Work"
             showHeader={false}
@@ -44,7 +44,7 @@ const firstWrapperRef = useParallaxAnchored({ rate: firstRate, enabled: heroOut,
       </Container>
 
       {/* Second Work section: starts ramping when DEV leaves to create gap for Education */}
-<div id="media" ref={useParallaxAnchored({ rate: secondRate, enabled: devOut, maxUpPx: 300 }) as any} style={{ position: 'relative', zIndex: 1 }}>
+<div id="media" ref={useParallaxAnchored<HTMLDivElement>({ rate: secondRate, enabled: devOut, maxUpPx: 300 })} style={{ position: 'relative', zIndex: 1 }}>
         <ExperienceSection
           title="Web Content Editor"
           showHeader={false}

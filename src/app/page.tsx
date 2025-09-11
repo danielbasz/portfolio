@@ -1,7 +1,7 @@
 import Hero from '../components/Hero/Hero';
 import Footer from '../components/Footer/Footer';
-import { Container } from '../components/ui';
-import { ExperienceSection } from '../components/sections';
+// import { Container } from '../components/ui';
+// import { ExperienceSection } from '../components/sections';
 import WorkSections from '../components/sections/WorkSections';
 import EducationSections from '../components/sections/EducationSections';
 import { portfolioData } from '../lib/data';
