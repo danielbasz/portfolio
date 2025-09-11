@@ -20,7 +20,7 @@ export default function Section({
   backdropRate = -0.15,
 }: SectionProps) {
   const parallaxEnabled = Boolean(backdropText && backdropRate !== 0);
-  const backdropRef = useParallax<HTMLDivElement>({ rate: backdropRate, enabled: parallaxEnabled });
+const backdropRef = useParallax<HTMLDivElement>({ rate: backdropRate, enabled: parallaxEnabled });
   const topStyle = backdropOffsetPx !== undefined
     ? `-${backdropOffsetPx}px`
     : backdropOffsetY !== undefined

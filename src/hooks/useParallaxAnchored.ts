@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, type RefObject } from 'react';
 
 interface UseParallaxAnchoredOptions {
   rate?: number; // negative moves up on scroll down
@@ -8,8 +8,8 @@ interface UseParallaxAnchoredOptions {
 
 // Like useParallax but anchors the transform at the moment it becomes enabled,
 // preventing a visible jump when turning on. Supports clamping max upward shift.
-export function useParallaxAnchored({ rate = -0.2, enabled = false, maxUpPx }: UseParallaxAnchoredOptions = {}) {
-  const ref = useRef<HTMLElement>(null);
+export function useParallaxAnchored<T extends HTMLElement = HTMLDivElement>({ rate = -0.2, enabled = false, maxUpPx }: UseParallaxAnchoredOptions = {}): RefObject<T | null> {
+  const ref = useRef<T | null>(null);
   const anchorRef = useRef<number | null>(null);
   const lastEnabledRef = useRef<boolean>(enabled);
   const lastRateRef = useRef<number>(rate);
@@ -57,5 +57,5 @@ export function useParallaxAnchored({ rate = -0.2, enabled = false, maxUpPx }: U
     };
   }, [enabled, rate, maxUpPx]);
 
-  return ref;
+  return ref as RefObject<T | null>;
 }

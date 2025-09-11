@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, type RefObject } from 'react';
 
 interface UseParallaxOptions {
   rate?: number;
@@ -6,12 +6,12 @@ interface UseParallaxOptions {
   enabled?: boolean;
 }
 
-export function useParallax({
+export function useParallax<T extends HTMLElement = HTMLDivElement>({
   rate = -0.5,
   direction = 'vertical',
   enabled = true
-}: UseParallaxOptions = {}) {
-  const ref = useRef<HTMLElement>(null);
+}: UseParallaxOptions = {}): RefObject<T | null> {
+  const ref = useRef<T | null>(null);
 
   useEffect(() => {
     if (!enabled) return;
@@ -25,7 +25,7 @@ export function useParallax({
         ? `translateY(${scrolled * rate}px)`
         : `translateX(${scrolled * rate}px)`;
       
-      element.style.transform = transform;
+      (element as HTMLElement).style.transform = transform;
     };
 
     // Add passive event listener for better performance
@@ -36,5 +36,5 @@ export function useParallax({
     };
   }, [rate, direction, enabled]);
 
-  return ref;
+  return ref as RefObject<T | null>;
 }

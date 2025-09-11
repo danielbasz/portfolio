@@ -13,7 +13,7 @@ export default function EducationSections({ education }: EducationSectionsProps)
   const { out: mediaOut } = useElementReveal({ targetId: 'media' });
 
   // Tiny depth lag on Education once MEDIA is out
-const eduWrapperRef = useParallaxAnchored<HTMLDivElement>({ rate: mediaOut ? -0.05 : 0, enabled: mediaOut, maxUpPx: 300 });
+const eduWrapperRef = useParallaxAnchored({ rate: mediaOut ? -0.05 : 0, enabled: mediaOut, maxUpPx: 300 });
 
 return (
 <div ref={eduWrapperRef}>
