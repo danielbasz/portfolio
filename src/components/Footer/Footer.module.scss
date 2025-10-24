@@ -9,41 +9,48 @@
 
 .container {
   @include container;
-  
-  & {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 2rem;
-  }
-
-  @include tablet {
-    flex-direction: column;
-    text-align: center;
-  }
 
   @include mobile {
     padding: 0 16px;
   }
 }
 
+.footerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+
+  @include tablet {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
 .footerLinks {
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
+  align-items: center;
   
   @include tablet {
     flex-wrap: wrap;
     justify-content: center;
   }
+}
+
+.socialLink {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   
-  a {
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-    transition: color 0.3s ease;
-    
-    &:hover {
-      color: white;
-    }
+  &:hover {
+    color: white;
+    transform: translateY(-2px);
   }
+  
+  @include focus-outline;
 }

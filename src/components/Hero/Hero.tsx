@@ -1,11 +1,9 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, useRef } from 'react';
 import { HeroProps } from '../../models';
 import { useParallax } from '../../hooks';
 import VideoBackground from '../VideoBackground/VideoBackground';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import styles from './Hero.module.scss';
 
 export default function Hero({ 
@@ -13,32 +11,10 @@ export default function Hero({
   title, 
   bio, 
   profileImage, 
-  socialLinks, 
   resumeUrl,
   email
 }: HeroProps) {
-  const titleRef = useRef<HTMLHeadingElement>(null);
   const heroSectionRef = useParallax({ rate: -0.5 });
-
-  useEffect(() => {
-    const heroTitle = titleRef.current;
-    if (heroTitle) {
-      const text = name;
-      heroTitle.innerHTML = '';
-      let i = 0;
-
-      function typeWriter() {
-        if (i < text.length) {
-          i++;
-          heroTitle!.innerHTML = `<mark>${text.substring(0, i)}&nbsp;</mark>`;
-          setTimeout(typeWriter, 100);
-        }
-      }
-      
-      // Start typing effect after a short delay
-      setTimeout(typeWriter, 500);
-    }
-  }, [name]);
 
 
   return (
@@ -47,8 +23,8 @@ export default function Hero({
       <div className={styles.container}>
         <div className={styles.heroContent}>
           <div className={styles.heroText}>
-            <h1 ref={titleRef}>
-              {name}
+            <h1>
+              <mark>{name}</mark>
             </h1>
             <p className={styles.subtitle}>{title}</p>
             <p className={styles.bio}>{bio}</p>
@@ -63,25 +39,6 @@ export default function Hero({
                     Download Résumé
                   </a>
                 )}
-              </div>
-              <div className={styles.socialLinksInline}>
-                {socialLinks.map((link) => {
-                  const key = (link.icon || link.name).toLowerCase();
-                  const Icon = key.includes('github') ? FaGithub : key.includes('linkedin') ? FaLinkedin : null;
-                  return (
-                    <a
-                      key={link.name}
-                      href={link.url}
-                      className={styles.socialLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={link.name}
-                      title={link.name}
-                    >
-                      {Icon ? <Icon size={24} /> : link.name}
-                    </a>
-                  );
-                })}
               </div>
             </div>
           </div>

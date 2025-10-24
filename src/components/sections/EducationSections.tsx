@@ -9,14 +9,14 @@ interface EducationSectionsProps {
 }
 
 export default function EducationSections({ education }: EducationSectionsProps) {
-  // Use the MEDIA section leaving the viewport as the trigger
-  const { out: mediaOut } = useElementReveal({ targetId: 'media' });
+  // Use the WORK section leaving the viewport as the trigger
+  const { out: workOut } = useElementReveal({ targetId: 'work' });
 
-  // Tiny depth lag on Education once MEDIA is out
-const eduWrapperRef = useParallaxAnchored({ rate: mediaOut ? -0.05 : 0, enabled: mediaOut, maxUpPx: 300 });
+  // Tiny depth lag on Education once WORK is out
+  const eduWrapperRef = useParallaxAnchored({ rate: workOut ? -0.05 : 0, enabled: workOut, maxUpPx: 300 });
 
-return (
-<div ref={eduWrapperRef}>
+  return (
+    <div ref={eduWrapperRef}>
       <ExperienceSection
         title="Education"
         showHeader={false}

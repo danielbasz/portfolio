@@ -56,7 +56,6 @@ export default function ExperienceSection({
           key={experience.id}
           experience={experience}
           className={
-            // Apply special styling for specific organizations
             experience.organization === 'Globo TV' ? 'globoCard' : ''
           }
         />

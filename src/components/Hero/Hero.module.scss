@@ -103,55 +103,12 @@ mark {
   }
 }
 
-.separator {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 2rem;
-  font-weight: 300;
-  line-height: 1;
-}
-
-.socialLinksInline {
-  display: flex;
-  gap: 1.25rem;
-  flex-wrap: wrap;
-}
-
 .btnPrimary {
   @include button-primary;
 }
 
 .btnSecondary {
   @include button-secondary;
-}
-
-.socialLink {
-  color: rgba(255, 255, 255, 0.8);
-  text-decoration: none;
-  font-weight: 500;
-  transition: var(--transition-base);
-  position: relative;
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: white;
-    transition: width 0.3s ease;
-  }
-
-  &:hover {
-    color: white;
-    transform: translateY(-1px);
-
-    &::after {
-      width: 100%;
-    }
-  }
-
-  @include focus-outline;
 }
 
 .profileImageWrapper {

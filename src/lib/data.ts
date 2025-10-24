@@ -54,7 +54,7 @@ export const portfolioData: PortfolioData = {
       location: "Rio de Janeiro, Brazil",
       description: "Developed Python and JavaScript automation tools for high-volume short-form video content at a leading broadcast network. Engineered reusable templates in Adobe Premiere and After Effects, enhancing production efficiency. Reduced daily production time from 40 to 6 minutes through automation.",
       tags: ["Python", "JavaScript", "Adobe Premiere", "After Effects", "Automation"],
-      image: "assets/globo-logo.jpg",
+      image: "assets/globo-logo.webp",
       type: "work"
     },
     {
@@ -65,7 +65,7 @@ export const portfolioData: PortfolioData = {
       location: "Rio de Janeiro, Brazil",
       description: "Edited and adapted broadcast series and feature films under tight deadlines. Optimized longer media content for diverse broadcast timeslots to ensure continuous programming. Spearheaded editing for Globoplay original content, reimagining TV shows for online media.",
       tags: ["Video Editing", "Broadcast", "Media Management", "Post-Production"],
-      image: "assets/globo-logo.jpg",
+      image: "assets/globo-logo.webp",
       type: "work"
     },
     {
@@ -107,19 +107,19 @@ export const portfolioData: PortfolioData = {
     },
     {
       id: "pucpr-graphic-design",
-      title: "Graphic Design B.A.",
+      title: "B.A. Graphic Design",
       organization: "PUCPR",
       period: "Feb 2004 - Feb 2005",
       location: "Curitiba, Brazil",
       description: "Art history, color theory, design and composition principles, digital media.",
       tags: ["Art History", "Color Theory", "Design Principles", "Composition", "Digital Media"],
       image: "assets/pucpr.png",
-      status: "completed",
+      status: "incomplete",
       type: "education"
     },
     {
       id: "pucrj-computer-science",
-      title: "B.A. Computer Science (Incomplete)",
+      title: "B.A. Computer Science",
       organization: "PUCRJ",
       period: "Feb 2002 - Feb 2003",
       location: "Rio de Janeiro, Brazil",

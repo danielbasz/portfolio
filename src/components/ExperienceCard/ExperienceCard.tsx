@@ -18,7 +18,6 @@ export default function ExperienceCard({ experience, className = '' }: Experienc
     organization,
     period,
     location,
-    description,
     tags,
     image
   } = experience;
@@ -40,12 +39,16 @@ export default function ExperienceCard({ experience, className = '' }: Experienc
         </div>
       )}
       <div className={styles.cardContent}>
-        <h3>{title}</h3>
+        <h3>
+          {title}
+          {experience.type === 'education' && experience.status === 'incomplete' && (
+            <span className={styles.incomplete}>Incomplete</span>
+          )}
+        </h3>
         <p className={styles.jobTitle}>
           {organization} • {period}
           {location && ` • ${location}`}
         </p>
-        <p>{description}</p>
         <div className={styles.techStack}>
           {tags.map((tag) => (
             <span key={tag} className={styles.techTag}>

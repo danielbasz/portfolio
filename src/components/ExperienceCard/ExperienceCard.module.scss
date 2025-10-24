@@ -28,8 +28,7 @@
   &.horizontal {
     display: flex;
     flex-direction: row;
-    min-height: 224px;
-    /* Reduced by 20% from 280px */
+    min-height: 0; // allow the card to shrink to the text height
 
     @include tablet {
       flex-direction: column;
@@ -129,6 +128,16 @@
     object-fit: contain;
     border-radius: 0;
   }
+
+  // Special handling for Globo logo (same behavior as other logos)
+  .image[src*='globo-logo'] {
+    max-width: 200px;
+    max-height: 150px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 0;
+  }
 }
 
 .cardContent {
@@ -137,7 +146,7 @@
   /* Reduced from 32px 40px */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
 
   @include mobile {
     padding: 20px;
@@ -149,6 +158,17 @@
     font-weight: 700;
     margin-bottom: 0px;
     color: var(--text-color);
+
+    .incomplete {
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.9em;
+
+      &::before {
+        /* two non-breaking spaces on each side of the slash */
+        content: '\00a0\00a0/\00a0\00a0';
+      }
+    }
   }
 
   p {
@@ -164,8 +184,9 @@
   font-size: 1rem;
   font-weight: 600;
   color: var(--primary-color);
-  margin-bottom: 12px;
-  /* Reduced from 16px */
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  line-height: 1.2 !important;
   letter-spacing: 0.3px;
 }
 
@@ -173,6 +194,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  margin-top: 1.2rem; // one line of spacing (matches jobTitle line-height)
   margin-bottom: 16px;
   /* Reduced from 24px */
 }
@@ -204,7 +226,8 @@
     .image {
       width: 100% !important;
       height: 100% !important;
-      /* Reduced from 105% to fit smaller card */
+      max-width: none !important;
+      max-height: none !important;
       object-fit: cover !important;
       display: block;
       margin: 0;
