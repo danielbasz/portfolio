@@ -23,11 +23,9 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(
-      135deg,
-      rgba(var(--primary-rgb), 0.9) 0%,
-      rgba(var(--secondary-rgb), 0.1) 100%
-    );
+    background: linear-gradient(135deg,
+        rgba(var(--primary-rgb), 0.9) 0%,
+        rgba(var(--secondary-rgb), 0.1) 100%);
     z-index: 1;
   }
 }
@@ -41,6 +39,7 @@
   width: 100%;
   margin: 0;
   padding-left: 0;
+
   @include mobile {
     padding-left: 0;
     margin: 0;
@@ -52,9 +51,11 @@
   display: grid;
   grid-template-columns: 1fr; // single column; content hugs the left
   gap: 60px;
-  align-items: center;
   position: relative;
   z-index: 1;
+  padding-left: 4rem;
+  margin: 3rem;
+
 
   @include tablet {
     grid-template-columns: 1fr;
@@ -74,7 +75,7 @@
       font-size: 2rem;
     }
 
-mark {
+    mark {
       background-color: white;
       color: black;
     }

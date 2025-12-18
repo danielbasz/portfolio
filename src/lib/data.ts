@@ -94,6 +94,18 @@ export const portfolioData: PortfolioData = {
       type: "education"
     },
     {
+      id: "mitx-python-certification",
+      title: "Intro to Computer Science and Programming using Python",
+      organization: "MITx/edX.org",
+      period: "Jan 2016 - Mar 2016",
+      location: "Online",
+      description: "Object-oriented programming concepts, data structures, visualization, and analysis.",
+      tags: ["Python", "OOP", "Data Structures", "Visualization", "Analysis"],
+      image: "assets/mitx-logo.jpg",
+      status: "completed",
+      type: "education"
+    },
+    {
       id: "pucpr-social-communication",
       title: "B.A. Social Communication",
       organization: "PUCPR",
@@ -127,17 +139,6 @@ export const portfolioData: PortfolioData = {
       tags: ["C Programming", "Data Structures", "Algorithms"],
       image: "assets/puc-rio-logo-png_seeklogo-234369.png",
       status: "incomplete",
-      type: "education"
-    },
-    {
-      id: "mitx-python-certification",
-      title: "Intro to Computer Science and Programming using Python",
-      organization: "MITx/edX.org",
-      period: "Jan 2016 - Mar 2016",
-      location: "Online",
-      description: "Object-oriented programming concepts, data structures, visualization, and analysis.",
-      tags: ["Python", "OOP", "Data Structures", "Visualization", "Analysis"],
-      status: "completed",
       type: "education"
     }
   ]
