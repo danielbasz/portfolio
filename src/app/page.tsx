@@ -27,7 +27,7 @@ export default function Home() {
       
       <Footer
         socialLinks={portfolioData.socialLinks}
-        copyrightText="© 2025 Daniel Barboza."
+copyrightText="© 2025 Daniel Porto."
       />
     </main>
   );
