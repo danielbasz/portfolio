@@ -3,13 +3,11 @@ import type { NextConfig } from "next";
 const isProd = process.env.NODE_ENV === 'production';
 
 const nextConfig: NextConfig = {
-  // Only enable GitHub Pages config in production
-  ...(isProd && {
-    output: 'export',
-    basePath: '/portfolio',
-    assetPrefix: '/portfolio',
-    trailingSlash: true,
-  }),
+  // Static export for GitHub Pages with custom domain
+  output: 'export',
+  basePath: '',
+  assetPrefix: '',
+  trailingSlash: true,
   images: {
     unoptimized: true // Required for static export
   },

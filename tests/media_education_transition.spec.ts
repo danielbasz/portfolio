@@ -44,7 +44,7 @@ test.describe('MEDIA → EDUCATION transition', () => {
     console.log('MEDIA section top position after DEV-out:', mediaTop);
     
     // Check that Education section is present
-    const educationVisible = await page.isVisible('text=EDUCATION');
+    const educationVisible = await page.isVisible('text="/EDU"');
     expect(educationVisible).toBe(true);
   });
 });

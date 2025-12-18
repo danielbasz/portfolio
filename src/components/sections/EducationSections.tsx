@@ -18,12 +18,12 @@ export default function EducationSections({ education }: EducationSectionsProps)
   return (
     <div ref={eduWrapperRef}>
       <ExperienceSection
-        title="Education"
+        title="EDU"
         showHeader={false}
         experiences={education}
         type="education"
         backgroundColor="white"
-        backdropText="EDUCATION"
+        backdropText="EDU"
         backdropOffsetPx={140}
         backdropRate={0}
       />

@@ -7,7 +7,7 @@ export const siteConfig = {
   author: {
     name: "Daniel Porto",
     email: "danielbassporto@gmail.com",
-    bio: "Passionate in bridging technology and art through code and creative media.",
+    bio: "",
     profileImage: "assets/profile-picture.jpg"
   },
 

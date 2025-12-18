@@ -21,12 +21,12 @@ export default function WorkSections({ work }: WorkSectionsProps) {
     <Container background="gradient">
       <div id="work" ref={workWrapperRef} data-work style={{ position: 'relative', zIndex: 2 }}>
         <ExperienceSection
-          title="Work"
+          title="XP"
           showHeader={false}
           experiences={work}
           type="work"
           sectionZIndex={1}
-          backdropText="WORK"
+          backdropText="EXP"
           backdropOffsetPx={140}
           backdropRate={0}
         />

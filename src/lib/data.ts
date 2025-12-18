@@ -6,7 +6,7 @@ export const portfolioData: PortfolioData = {
   resumeUrl: siteConfig.contact.resumeUrl,
   personal: {
     name: siteConfig.author.name,
-    title: "Full Stack Software Developer & Multimedia Specialist",
+    title: "Software Development & Multimedia",
     bio: siteConfig.author.bio,
     email: siteConfig.author.email,
     profileImage: siteConfig.author.profileImage

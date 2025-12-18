@@ -24,7 +24,7 @@ export default function Hero({
         <div className={styles.heroContent}>
           <div className={styles.heroText}>
             <h1>
-              <mark>{name}</mark>
+              <mark>{name}&nbsp;</mark>
             </h1>
             <p className={styles.subtitle}>{title}</p>
             <p className={styles.bio}>{bio}</p>
@@ -43,7 +43,7 @@ export default function Hero({
             </div>
           </div>
           
-          <div className={styles.profileImageWrapper}>
+          {/* <div className={styles.profileImageWrapper}>
             <Image
               src={profileImage}
               alt={`${name} profile photo`}
@@ -52,7 +52,7 @@ export default function Hero({
               className={styles.profilePhoto}
               priority
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
