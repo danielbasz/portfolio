@@ -22,8 +22,8 @@ export const siteConfig = {
   },
 
   deployment: {
-    basePath: "/portfolio",
-    assetPrefix: "/portfolio"
+    basePath: "",
+    assetPrefix: ""
   },
 
   seo: {
