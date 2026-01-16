@@ -1,5 +1,6 @@
 import "./globals.scss";
 import { generateMetadata, siteConfig } from "../config";
+import ParticleBackground from "../components/ParticleBackground";
 
 export const metadata = generateMetadata();
 
@@ -10,7 +11,7 @@ export default function RootLayout({
 }>) {
   const isProd = process.env.NODE_ENV === 'production';
   const assetPrefix = isProd ? siteConfig.deployment.assetPrefix : '';
-  
+
   return (
     <html lang="en">
       <head>
@@ -20,29 +21,19 @@ export default function RootLayout({
               --asset-prefix: '${assetPrefix}';
             }
             body {
-              background-image: url('${assetPrefix}/assets/white-space-addition.jpg') !important;
-              background-size: auto;
-              background-position: center;
-              background-repeat: repeat;
-            }
-            .section-gap {
-              background-image: url('${assetPrefix}/assets/white-space-addition.jpg') !important;
-              background-size: auto;
-              background-position: center;
-              background-repeat: repeat;
-            }
-            /* Ensure gradient containers reveal the same image as body under a soft white gradient */
-            .gradient-bg {
-              background:
-                url('${assetPrefix}/assets/white-space-addition.jpg') !important;
-              background-size: auto, auto;
-              background-position: center, center;
-              background-repeat: repeat, repeat;
+              background: #000 !important;
             }
           `
         }} />
       </head>
       <body>
+        {/* Interactive particle background with "Hi!" text */}
+        <ParticleBackground
+          text="Hi!"
+          particleCount={800}
+          textParticleCount={2000}
+          mouseRadius={120}
+        />
         {children}
       </body>
     </html>

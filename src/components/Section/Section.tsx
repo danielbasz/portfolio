@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { SectionProps } from '../../models';
 import { useParallax } from '../../hooks';
@@ -18,25 +19,56 @@ export default function Section({
   backdropOffsetY,
   backdropOffsetPx,
   backdropRate = -0.15,
+  backdropAlign = 'right',
 }: SectionProps) {
   const parallaxEnabled = Boolean(backdropText && backdropRate !== 0);
-const backdropRef = useParallax<HTMLDivElement>({ rate: backdropRate, enabled: parallaxEnabled });
-  const topStyle = backdropOffsetPx !== undefined
-    ? `-${backdropOffsetPx}px`
-    : backdropOffsetY !== undefined
-    ? `-${backdropOffsetY}vh`
-    : '-1px';
+  const backdropRef = useParallax<HTMLDivElement>({ rate: backdropRate, enabled: parallaxEnabled });
+  const textRef = useRef<HTMLSpanElement>(null);
+
+  // Scroll-based gradient animation
+  useEffect(() => {
+    if (!textRef.current) return;
+
+    const handleScroll = () => {
+      if (!textRef.current) return;
+
+      // Get scroll position and calculate gradient angle
+      const scrollY = window.scrollY;
+      // Subtle angle shift: oscillates between 100deg and 170deg based on scroll
+      const angle = 135 + Math.sin(scrollY * 0.002) * 35;
+      // Shift the gradient position for color movement
+      const position = (scrollY * 0.1) % 200;
+
+      textRef.current.style.background = `linear-gradient(${angle}deg, var(--primary-color) ${position}%, var(--secondary-color) ${position + 100}%)`;
+      textRef.current.style.backgroundClip = 'text';
+      textRef.current.style.webkitBackgroundClip = 'text';
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial call
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Only apply custom top offset if explicitly set to a non-zero value
+  const hasCustomOffset = (backdropOffsetPx !== undefined && backdropOffsetPx !== 0) ||
+    (backdropOffsetY !== undefined && backdropOffsetY !== 0);
+  const topStyle = hasCustomOffset
+    ? backdropOffsetPx !== undefined
+      ? `-${backdropOffsetPx}px`
+      : `-${backdropOffsetY}vh`
+    : undefined;
 
   return (
     <section className={`${styles.section} ${styles[backgroundColor]} ${className}`} style={zIndex !== undefined ? { zIndex } : undefined}>
-{backdropText && (
+      {backdropText && (
         <div
-ref={backdropRef}
-          className={styles.backdropWord}
-          style={{ top: topStyle }}
+          ref={backdropRef}
+          className={`${styles.backdropWord} ${backdropAlign === 'left' ? styles.backdropWordLeft : ''}`}
+          style={topStyle ? { top: topStyle } : undefined}
           aria-hidden="true"
         >
-          <span className={styles.backdropText}>{backdropText}</span>
+          <span ref={textRef} className={styles.backdropText}>{backdropText}</span>
         </div>
       )}
       <div className={styles.container}>
@@ -62,7 +94,7 @@ ref={backdropRef}
             )}
           </div>
         )}
-        
+
         <div className={styles.projectsGrid}>
           {children}
         </div>

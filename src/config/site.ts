@@ -1,9 +1,9 @@
 export const siteConfig = {
   name: "Daniel Porto",
-  title: "Daniel Porto - Developer & Multimedia Specialist", 
+  title: "Daniel Porto - Developer & Multimedia Specialist",
   description: "Full Stack Software Developer & Multimedia Specialist passionate in bridging technology and art through code and creative media.",
   url: "https://danielbasz.github.io/portfolio/",
-  
+
   author: {
     name: "Daniel Porto",
     email: "danielbassporto@gmail.com",
@@ -17,7 +17,7 @@ export const siteConfig = {
   },
 
   social: {
-    linkedin: "https://linkedin.com/in/danielbza",
+    linkedin: "https://linkedin.com/in/danporto",
     github: "https://github.com/danielbasz"
   },
 
@@ -28,13 +28,13 @@ export const siteConfig = {
 
   seo: {
     keywords: [
-      "Full Stack Developer", 
-      "Software Engineer", 
-      "Multimedia", 
-      "Angular", 
-      "Java", 
-      "React", 
-      "Next.js", 
+      "Full Stack Developer",
+      "Software Engineer",
+      "Multimedia",
+      "Angular",
+      "Java",
+      "React",
+      "Next.js",
       "Web Development"
     ],
     twitterHandle: "@danielbasz", // Update if you have one

@@ -8,14 +8,15 @@
   height: 100%;
   overflow: hidden;
   z-index: 0; // Behind content
-  
+
   // Add subtle fade-in animation
   animation: fadeIn 3s ease-in;
-  
+
   @keyframes fadeIn {
     from {
       opacity: 0;
     }
+
     to {
       opacity: 1;
     }
@@ -35,26 +36,23 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(1.2);
-  width: 100%;
-  height: 100%;
-  min-width: 120%; // Ensure it covers full width even with scaling
-  min-height: 120%; // Ensure it covers full height even with scaling
+  transform: translate(-50%, -50%);
   border: none;
   pointer-events: none; // Prevent interaction with the video
-  
-  // Maintain aspect ratio while covering the entire container
-  object-fit: cover;
-  
-  @media (min-aspect-ratio: 16/9) {
-    width: 120%;
-    height: auto;
-  }
-  
-  @media (max-aspect-ratio: 16/9) {
-    width: auto;
-    height: 120%;
-  }
+
+  // YouTube embeds maintain 16:9 aspect ratio internally.
+  // To ensure full coverage without black bars at ANY viewport aspect ratio,
+  // we calculate dimensions that will always cover the container.
+  // The key: if viewport is wider than 16:9, width dictates; if taller, height dictates.
+  // We use max() to pick whichever dimension needs to be larger.
+
+  // For a 16:9 video to cover a container:
+  // - Width needs to be at least: max(100vw, 100vh * 16/9)
+  // - Height needs to be at least: max(100vh, 100vw * 9/16)
+  // Adding a small buffer (5%) to eliminate any edge-case gaps
+
+  width: max(105vw, 105vh * 16 / 9);
+  height: max(105vh, 105vw * 9 / 16);
 }
 
 .videoOverlay {
@@ -63,14 +61,13 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.3) 0%,
-    rgba(0, 0, 0, 0.5) 50%,
-    rgba(0, 0, 0, 0.3) 100%
-  );
+  // Reduced opacity to let video show through knockout text better
+  background: linear-gradient(180deg,
+      rgba(0, 0, 0, 0.831) 0%,
+      rgba(0, 0, 0, 0.3) 50%,
+      rgba(0, 0, 0, 0.15) 100%);
   pointer-events: none;
-  
+
   // Add a subtle texture or pattern if desired
   &::after {
     content: '';
@@ -79,13 +76,11 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: 
-      repeating-linear-gradient(
-        45deg,
+    background-image:
+      repeating-linear-gradient(45deg,
         transparent,
         transparent 2px,
         rgba(255, 255, 255, 0.01) 2px,
-        rgba(255, 255, 255, 0.01) 4px
-      );
+        rgba(255, 255, 255, 0.01) 4px);
   }
 }

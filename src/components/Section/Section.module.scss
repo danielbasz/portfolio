@@ -13,6 +13,10 @@
   &.white {
     background-color: var(--white);
   }
+
+  &.transparent {
+    background-color: transparent;
+  }
 }
 
 .container {
@@ -41,7 +45,7 @@
 
   @include mobile {
     grid-template-columns: 1fr !important;
-    
+
     .sectionImages,
     .headerImage {
       display: none !important;
@@ -87,10 +91,21 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
+// Folder container - frosted glass effect with cards inside
 .projectsGrid {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 20px;
+  // Folder styling - matches the tab border-radius
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.08),
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 // Ensure content sits above backdrop
@@ -100,39 +115,70 @@
   z-index: 0;
 }
 
-// Decorative backdrop word that can sit under the hero and move with parallax
+// Decorative backdrop word - positioned so its bottom touches the folder container top
 .backdropWord {
   position: absolute;
   // Align to the right edge of the inner container (max-width-centered) plus its padding
-  right: calc(max((100vw - var(--container-max-width)) / 2, 0px) + 24px);
+  right: calc(max((100vw - var(--container-max-width)) / 2, 0px) + 48px);
   left: auto;
-  transform: none;
-  // Fixed size to preserve anchor alignment across viewports
-  font-size: 160px;
+  // Position: top at 100px (where folder starts), then move UP by tab height
+  top: 100px;
+  transform: translateY(-100%); // move up by its own height so BOTTOM touches the folder top
+  // Smaller base scale
+  font-size: 80px;
   font-weight: 800;
   line-height: 0.9;
   letter-spacing: -0.03em;
   white-space: nowrap;
-  color: #000; // black fill as requested
-  // Folder tab styling
-  background-color: white;
+  // Tab styling - seamless connection to folder
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px 20px 0 0;
   display: inline-block;
-  padding: 0em 0em 0em 0.1em; // add right padding to avoid clipping 'v'
-  border-bottom: none; // open bottom edge to blend into section top seam
-  box-shadow: 0px 0px 0px  0px rgba(1, 1, 1, 1) inset;
-  paint-order: stroke fill;
+  padding: 0.2em 0.35em 0 0.35em;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: none; // seamless connection to folder below
   text-transform: uppercase;
-  pointer-events: none; // ignore mouse events
+  pointer-events: none;
   user-select: none;
-  z-index: 0; // stay behind regular content
-  will-change: transform; // hint for smoother parallax
+  z-index: 1; // above folder container
+  will-change: transform;
 
-  @media (max-width: var(--breakpoint-mobile)) {
-    right: 16px; // match container mobile padding
+  // Tablet - smaller
+  @include tablet {
+    font-size: 60px;
+    border-radius: 16px 16px 0 0;
+    right: 32px;
+    top: 80px; // section padding is smaller on tablet
+  }
+
+  // Mobile - even smaller
+  @include mobile {
+    font-size: 40px;
+    border-radius: 12px 12px 0 0;
+    right: 24px;
+    top: 60px; // section padding is smaller on mobile
+    padding: 0.15em 0.3em 0 0.3em;
   }
 }
 
-// Gradient-filled text inside the tab
+// Left-aligned variant for backdrop (e.g., Education section)
+.backdropWordLeft {
+  right: auto;
+  left: calc(max((100vw - var(--container-max-width)) / 2, 0px) + 48px);
+
+  @include tablet {
+    left: 32px;
+    right: auto;
+  }
+
+  @include mobile {
+    left: 24px;
+    right: auto;
+  }
+}
+
+// Gradient-filled text with purple/blue gradient
 .backdropText {
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   -webkit-background-clip: text;
@@ -145,7 +191,7 @@
   text-transform: uppercase;
 }
 
-// Ensure a visible trailing space (prevents HTML collapsing at line end)
+// Remove the trailing space for cleaner cutout appearance
 .backdropText::after {
-  content: "\00a0";
+  content: "";
 }

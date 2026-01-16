@@ -8,19 +8,20 @@ interface EducationSectionsProps {
 
 export default function EducationSections({ education }: EducationSectionsProps) {
   return (
-    <Container background="gradient">
-      <div style={{ height: '250px' }} /> {/* Spacer to reveal background - matches section-gap */}
+    <Container background="dark">
+      <div style={{ height: '125px' }} /> {/* Spacer to reveal background */}
       <div id="education" style={{ position: 'relative', zIndex: 2 }}>
         <ExperienceSection
           title="EDU"
           showHeader={false}
           experiences={education}
           type="education"
-          backgroundColor="light"
+          backgroundColor="transparent"
           sectionZIndex={2}
-          backdropText="EDU"
-          backdropOffsetPx={140}
+          backdropText="Education"
+          backdropOffsetPx={0}
           backdropRate={0}
+          backdropAlign="left"
         />
       </div>
     </Container>

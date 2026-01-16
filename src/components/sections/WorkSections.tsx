@@ -8,7 +8,7 @@ interface WorkSectionsProps {
 
 export default function WorkSections({ work }: WorkSectionsProps) {
   return (
-    <Container background="gradient">
+    <Container background="dark">
       <div id="work" style={{ position: 'relative', zIndex: 2 }}>
         <ExperienceSection
           title="XP"
@@ -16,8 +16,8 @@ export default function WorkSections({ work }: WorkSectionsProps) {
           experiences={work}
           type="work"
           sectionZIndex={1}
-          backdropText="EXP"
-          backdropOffsetPx={140}
+          backdropText="WORK"
+          backdropOffsetPx={0}
           backdropRate={0}
         />
       </div>

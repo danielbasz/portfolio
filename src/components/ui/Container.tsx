@@ -3,20 +3,21 @@ import { ReactNode, ElementType } from 'react';
 interface ContainerProps {
   children: ReactNode;
   className?: string;
-  background?: 'light' | 'white' | 'gradient';
+  background?: 'light' | 'white' | 'gradient' | 'dark';
   as?: ElementType;
 }
 
-export default function Container({ 
-  children, 
-  className = '', 
+export default function Container({
+  children,
+  className = '',
   background,
   as: Component = 'div'
 }: ContainerProps) {
   const backgroundClasses = {
     light: 'bg-light',
-    white: 'bg-white', 
-    gradient: 'gradient-bg'
+    white: 'bg-white',
+    gradient: 'gradient-bg',
+    dark: 'bg-dark'
   };
 
   const backgroundClass = background ? backgroundClasses[background] : '';
@@ -27,7 +28,7 @@ export default function Container({
   ].filter(Boolean).join(' ');
 
   return (
-    <Component 
+    <Component
       className={combinedClassName}
       style={background === 'gradient' ? { position: 'relative' } : undefined}
     >

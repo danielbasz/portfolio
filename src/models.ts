@@ -55,7 +55,7 @@ export interface SectionProps {
   headerImages?: string[]; // Support multiple header images
   children: React.ReactNode;
   className?: string;
-  backgroundColor?: 'light' | 'white';
+  backgroundColor?: 'light' | 'white' | 'transparent';
   hideHeader?: boolean; // When true, the section header (title/description/images) is not rendered
   zIndex?: number; // Optional z-index override for stacking between adjacent sections
   // Decorative, non-semantic backdrop word that scrolls with the section
@@ -66,6 +66,8 @@ export interface SectionProps {
   backdropOffsetPx?: number;
   /** Parallax rate (negative moves up as you scroll down) */
   backdropRate?: number;
+  /** Alignment of backdrop text ('left' or 'right', default 'right') */
+  backdropAlign?: 'left' | 'right';
 }
 
 export interface FooterProps {

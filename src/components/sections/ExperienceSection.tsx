@@ -8,15 +8,15 @@ interface ExperienceSectionProps {
   experiences: Experience[];
   type: 'work' | 'education';
   headerImages?: string[];
-  backgroundColor?: 'light' | 'white';
+  backgroundColor?: 'light' | 'white' | 'transparent';
   className?: string;
   showHeader?: boolean; // default true; when false, hides the header (title/description/images)
   sectionZIndex?: number; // optional stacking override for this section
-  // Optional decorative backdrop props
   backdropText?: string;
   backdropOffsetY?: number;
   backdropOffsetPx?: number;
   backdropRate?: number;
+  backdropAlign?: 'left' | 'right';
 }
 
 export default function ExperienceSection({
@@ -25,7 +25,7 @@ export default function ExperienceSection({
   experiences,
   type,
   headerImages,
-  backgroundColor = 'white',
+  backgroundColor = 'transparent',
   className,
   showHeader = true,
   sectionZIndex,
@@ -33,6 +33,7 @@ export default function ExperienceSection({
   backdropOffsetY,
   backdropOffsetPx,
   backdropRate,
+  backdropAlign,
 }: ExperienceSectionProps) {
   // Filter experiences by type
   const filteredExperiences = experiences.filter(exp => exp.type === type);
@@ -50,6 +51,7 @@ export default function ExperienceSection({
       backdropOffsetY={backdropOffsetY}
       backdropOffsetPx={backdropOffsetPx}
       backdropRate={backdropRate}
+      backdropAlign={backdropAlign}
     >
       {filteredExperiences.map((experience) => (
         <ExperienceCard

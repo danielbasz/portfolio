@@ -1,0 +1,97 @@
+@use '../../styles/mixins' as *;
+
+.sectionGap {
+    position: relative;
+    width: 100%;
+    min-height: 50vh;
+    display: flex;
+    align-items: flex-end; // Position content at lower third
+    padding-bottom: 10vh;
+    overflow: hidden;
+    isolation: isolate; // Allow blend modes within
+    background: white; // Fallback
+
+    @include tablet {
+        min-height: 40vh;
+        padding-bottom: 8vh;
+    }
+
+    @include mobile {
+        min-height: 35vh;
+        padding-bottom: 6vh;
+    }
+}
+
+// Base layer: Black and white pattern
+.patternLayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+
+// Top layer: Palm trees with blend mode
+.backgroundImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+
+    // THE MAGIC! Palm trees blend with the B&W pattern
+    // multiply: dark areas (trees) show, light areas (sky) become transparent-ish
+    mix-blend-mode: multiply;
+
+    // Other modes to try:
+    // mix-blend-mode: screen;      // Inverted - light shows, dark becomes transparent
+    // mix-blend-mode: overlay;     // High contrast combo
+    // mix-blend-mode: soft-light;  // Subtle blend
+    // mix-blend-mode: hard-light;  // Intense contrast
+    // mix-blend-mode: difference;  // Wild color inversion!
+    // mix-blend-mode: exclusion;   // Similar to difference, softer
+    // mix-blend-mode: darken;      // Only shows darker of the two
+    // mix-blend-mode: lighten;     // Only shows lighter of the two
+}
+
+.content {
+    position: relative;
+    width: 100%;
+    z-index: 2;
+}
+
+.titleWrapper {
+    display: flex;
+    justify-content: flex-end; // Align title to the right
+    padding-right: 0; // Flush to right edge
+
+    h2 {
+        // Same fluid typography as hero title
+        --title-font-size: clamp(2.25rem, 5vw + 0.75rem, 4.5rem);
+        font-size: var(--title-font-size);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin: 0;
+        line-height: 1;
+        color: white;
+
+        mark {
+            background-color: white;
+            color: rgb(0, 0, 0);
+            padding: 0 0.25em;
+            display: inline-block;
+            line-height: inherit;
+
+            // Knockout text effect - background shows through text
+            mix-blend-mode: screen;
+        }
+    }
+}

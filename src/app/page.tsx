@@ -19,15 +19,16 @@ export default function Home() {
         resumeUrl={portfolioData.resumeUrl}
         email={portfolioData.personal.email}
       />
+
       {/* Work Section - Combined with transitioning background */}
       <WorkSections work={portfolioData.work} />
 
       {/* Education Section (same choreography as Work transitions) */}
       <EducationSections education={portfolioData.education} />
-      
+
       <Footer
         socialLinks={portfolioData.socialLinks}
-copyrightText="© 2025 Daniel Porto."
+        copyrightText="© 2025 Daniel Porto."
       />
     </main>
   );

@@ -3,38 +3,33 @@
 .hero {
   min-height: 80vh;
   display: flex;
-  align-items: center;
+  align-items: flex-end; // Position content at bottom
+  padding-bottom: 15vh; // Place content at lower third of viewport
   background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
   color: white;
   position: relative;
   z-index: 5; // ensure hero sits above later sections and backdrop word
   overflow: hidden;
-  @include gradient-overlay;
+  // isolation: isolate creates a new stacking context but allows blend modes within
+  isolation: isolate;
+
+  @include tablet {
+    padding-bottom: 12vh;
+  }
 
   @include mobile {
     min-height: 80vh;
+    padding-bottom: 10vh;
   }
 
-  // Ensure the gradient overlay is above the video but below content
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg,
-        rgba(var(--primary-rgb), 0.9) 0%,
-        rgba(var(--secondary-rgb), 0.1) 100%);
-    z-index: 1;
-  }
+  // REMOVED: The gradient ::before overlay was blocking mix-blend-mode
+  // The video component has its own overlay for darkening
 }
 
 .container {
   @include container;
   position: relative;
-  z-index: 2; // Above video and overlay
-  // Make hero container full-bleed to align content further left
+  // Removed z-index to allow mix-blend-mode to work through layers
   max-width: none;
   width: 100%;
   margin: 0;
@@ -52,10 +47,9 @@
   grid-template-columns: 1fr; // single column; content hugs the left
   gap: 60px;
   position: relative;
-  z-index: 1;
-  padding-left: 4rem;
-  margin: 3rem;
-
+  // Removed z-index to allow blend mode to work
+  padding-left: 0rem;
+  margin: 0rem;
 
   @include tablet {
     grid-template-columns: 1fr;
@@ -65,62 +59,110 @@
 }
 
 .heroText {
-  h1 {
-    font-size: var(--font-size-hero);
-    font-weight: 700;
-    margin-bottom: 1rem;
-    letter-spacing: -0.02em;
+  // Define font size as CSS variable so buttons can reference it
+  --title-font-size: clamp(2.25rem, 5vw + 0.75rem, 4.5rem);
 
-    @include mobile {
-      font-size: 2rem;
-    }
+  h1 {
+    // Larger fluid typography for better readability
+    font-size: var(--title-font-size);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0;
+    line-height: 1;
 
     mark {
       background-color: white;
-      color: black;
+      color: rgb(0, 0, 0);
+      padding: 0 0.25em;
+      display: inline-block;
+      line-height: inherit;
+
+      // Knockout text effect - video shows through the text!
+      mix-blend-mode: screen;
     }
+  }
+}
+
+// Row containing title and icon buttons
+.titleRow {
+  display: flex;
+  align-items: stretch; // Make buttons same height as title
+  gap: 0; // No gap - buttons sit flush with title
+  flex-wrap: nowrap; // Keep buttons on same line as title
+}
+
+// Container for the square icon buttons
+.iconButtons {
+  display: flex;
+  gap: 0; // No gap between buttons
+  align-items: stretch;
+}
+
+// Shared base styles for icon buttons
+%iconBtnBase {
+  // Height matches the title's computed height (font-size * line-height of 1)
+  // Width equals height for a perfect square
+  height: var(--title-font-size);
+  width: var(--title-font-size);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  // Font size for CV text - proportional to button size
+  font-size: calc(var(--title-font-size) * 0.4);
+  font-weight: 700;
+  box-sizing: border-box;
+
+  svg {
+    width: 45%;
+    height: 45%;
+  }
+}
+
+// Solid white background button (mail icon) - keeping for potential use
+.iconBtn {
+  @extend %iconBtnBase;
+  background: white;
+  color: black;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.85);
+    transform: scale(1.05);
+  }
+}
+
+// Outlined button (CV and mail)
+.iconBtnOutline {
+  @extend %iconBtnBase;
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.05);
   }
 }
 
 .subtitle {
-  font-size: var(--font-size-subtitle);
-  font-weight: 300;
-  margin-bottom: 2rem;
+  // Larger fluid typography for better readability
+  font-size: clamp(1.25rem, 2.5vw + 0.5rem, 2rem);
+  font-weight: 400;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
   opacity: 0.9;
+
+  // Calculate padding to align "D" in subtitle with "D" in title
+  padding-left: calc(var(--title-font-size) * 1.72);
 }
 
-.bio {
-  font-size: 1.125rem;
-  line-height: 1.8;
-  margin-bottom: 3rem;
-  opacity: 0.8;
-  max-width: 500px;
-}
-
-.contactLinks {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.contactRow {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-
-  @include tablet {
-    justify-content: flex-start;
-  }
-}
-
-.btnPrimary {
-  @include button-primary;
-}
-
-.btnSecondary {
-  @include button-secondary;
-}
+// Legacy button styles kept for potential reuse elsewhere
+// .contactLinks, .contactRow, .btnPrimary, .btnSecondary removed - using icon buttons now
 
 .profileImageWrapper {
   display: flex;
@@ -139,4 +181,15 @@
     width: 200px;
     height: 200px;
   }
+}
+
+// White separator line at the bottom of hero
+.separator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background-color: white;
+  z-index: 10;
 }

@@ -6,7 +6,7 @@ export const portfolioData: PortfolioData = {
   resumeUrl: siteConfig.contact.resumeUrl,
   personal: {
     name: siteConfig.author.name,
-    title: "Software Development & Multimedia",
+    title: "Development & Multimedia",
     bio: siteConfig.author.bio,
     email: siteConfig.author.email,
     profileImage: siteConfig.author.profileImage
@@ -18,7 +18,7 @@ export const portfolioData: PortfolioData = {
       icon: "linkedin"
     },
     {
-      name: "GitHub", 
+      name: "GitHub",
       url: siteConfig.social.github,
       icon: "github"
     }
