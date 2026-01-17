@@ -1,3 +1,6 @@
+'use client';
+
+import { useState, useCallback, useRef, useEffect } from 'react';
 import Section from '../Section/Section';
 import ExperienceCard from '../ExperienceCard/ExperienceCard';
 import { Experience } from '../../models';
@@ -35,33 +38,70 @@ export default function ExperienceSection({
   backdropRate,
   backdropAlign,
 }: ExperienceSectionProps) {
+  // Track which card is currently expanded (only one at a time)
+  const [expandedCardId, setExpandedCardId] = useState<string | null>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
   // Filter experiences by type
   const filteredExperiences = experiences.filter(exp => exp.type === type);
 
+  // Handle card toggle - if same card clicked, collapse; otherwise expand the new one
+  const handleCardToggle = useCallback((cardId: string) => {
+    setExpandedCardId(prevId => (prevId === cardId ? null : cardId));
+  }, []);
+
+  // Click-outside detection to collapse expanded card
+  useEffect(() => {
+    if (!expandedCardId) return;
+
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      // Check if click is outside any experience card
+      const clickedCard = target.closest('[data-experience-card]');
+      if (!clickedCard) {
+        setExpandedCardId(null);
+      }
+    };
+
+    // Use a slight delay to avoid immediate collapse on the same click that expanded
+    const timeoutId = setTimeout(() => {
+      document.addEventListener('click', handleClickOutside);
+    }, 0);
+
+    return () => {
+      clearTimeout(timeoutId);
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [expandedCardId]);
+
   return (
-    <Section
-      title={title}
-      description={description || ''}
-      headerImages={headerImages}
-      backgroundColor={backgroundColor}
-      className={className}
-      hideHeader={!showHeader}
-      zIndex={sectionZIndex}
-      backdropText={backdropText}
-      backdropOffsetY={backdropOffsetY}
-      backdropOffsetPx={backdropOffsetPx}
-      backdropRate={backdropRate}
-      backdropAlign={backdropAlign}
-    >
-      {filteredExperiences.map((experience) => (
-        <ExperienceCard
-          key={experience.id}
-          experience={experience}
-          className={
-            experience.organization === 'Globo TV' ? 'globoCard' : ''
-          }
-        />
-      ))}
-    </Section>
+    <div ref={sectionRef}>
+      <Section
+        title={title}
+        description={description || ''}
+        headerImages={headerImages}
+        backgroundColor={backgroundColor}
+        className={className}
+        hideHeader={!showHeader}
+        zIndex={sectionZIndex}
+        backdropText={backdropText}
+        backdropOffsetY={backdropOffsetY}
+        backdropOffsetPx={backdropOffsetPx}
+        backdropRate={backdropRate}
+        backdropAlign={backdropAlign}
+      >
+        {filteredExperiences.map((experience) => (
+          <ExperienceCard
+            key={experience.id}
+            experience={experience}
+            className={
+              experience.organization === 'Globo TV' ? 'globoCard' : ''
+            }
+            isExpanded={expandedCardId === experience.id}
+            onToggle={() => handleCardToggle(experience.id)}
+          />
+        ))}
+      </Section>
+    </div>
   );
 }

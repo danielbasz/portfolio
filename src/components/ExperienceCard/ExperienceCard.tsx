@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef, useCallback, useState } from 'react';
 import Image from 'next/image';
 import { Experience } from '../../models';
 import styles from './ExperienceCard.module.scss';
@@ -8,17 +8,25 @@ import styles from './ExperienceCard.module.scss';
 interface ExperienceCardProps {
   experience: Experience;
   className?: string;
+  isExpanded?: boolean;
+  onToggle?: () => void;
 }
 
-export default function ExperienceCard({ experience, className = '' }: ExperienceCardProps) {
+export default function ExperienceCard({ 
+  experience, 
+  className = '',
+  isExpanded = false,
+  onToggle
+}: ExperienceCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
-  const hasAnimated = useRef(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   const {
     title,
     organization,
     period,
     location,
+    description,
     tags,
     image
   } = experience;
@@ -26,13 +34,13 @@ export default function ExperienceCard({ experience, className = '' }: Experienc
   // Intersection observer for scroll-in animation
   useEffect(() => {
     const element = cardRef.current;
-    if (!element) return;
+    if (!element || isVisible) return; // Skip if already visible
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated.current) {
-          element.classList.add(styles.visible);
-          hasAnimated.current = true;
+        if (entry.isIntersecting) {
+          setIsVisible(true); // React state instead of classList
+          observer.disconnect();
         }
       },
       { threshold: 0.1 }
@@ -40,7 +48,7 @@ export default function ExperienceCard({ experience, className = '' }: Experienc
 
     observer.observe(element);
     return () => observer.disconnect();
-  }, []);
+  }, [isVisible]);
 
   // Dock magnification effect - scales card based on mouse proximity
   const handleMouseMove = useCallback((e: MouseEvent) => {
@@ -84,8 +92,30 @@ export default function ExperienceCard({ experience, className = '' }: Experienc
   // Determine if the passed className corresponds to a CSS-module export.
   const additionalClass = className && (styles as Record<string, string>)[className] ? (styles as Record<string, string>)[className] : className;
 
+  // Handle keyboard navigation for accessibility
+  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      onToggle?.();
+    }
+  }, [onToggle]);
+
+  // Handle click to toggle expansion
+  const handleClick = useCallback(() => {
+    onToggle?.();
+  }, [onToggle]);
+
   return (
-    <div ref={cardRef} className={`${styles.projectCard} ${styles.horizontal} ${additionalClass}`}>
+    <div 
+      ref={cardRef} 
+      className={`${styles.projectCard} ${styles.horizontal} ${additionalClass} ${isVisible ? styles.visible : ''} ${isExpanded ? styles.expanded : ''}`}
+      onClick={handleClick}
+      onKeyDown={handleKeyDown}
+      role="button"
+      tabIndex={0}
+      aria-expanded={isExpanded}
+      data-experience-card
+    >
       {image && (
         <div className={styles.cardImage}>
           <Image
@@ -108,6 +138,13 @@ export default function ExperienceCard({ experience, className = '' }: Experienc
           {organization} • {period}
           {location && ` • ${location}`}
         </p>
+        
+        {/* Description - only visible when expanded */}
+        <div className={styles.descriptionWrapper}>
+          <p className={styles.description}>{description}</p>
+        </div>
+        
+        {/* Tags - only visible when expanded */}
         <div className={styles.techStack}>
           {tags.map((tag) => (
             <span key={tag} className={styles.techTag}>
@@ -115,6 +152,22 @@ export default function ExperienceCard({ experience, className = '' }: Experienc
             </span>
           ))}
         </div>
+      </div>
+      
+      {/* Expand indicator */}
+      <div className={styles.expandIndicator} aria-hidden="true">
+        <svg 
+          width="20" 
+          height="20" 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          stroke="currentColor" 
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
       </div>
     </div>
   );
