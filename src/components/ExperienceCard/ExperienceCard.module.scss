@@ -74,7 +74,7 @@
   &.horizontal {
     display: flex;
     flex-direction: row;
-    min-height: 0; // allow the card to shrink to the text height
+    align-items: stretch; // Allow card to grow when expanded
 
     @include tablet {
       flex-direction: column;
@@ -104,6 +104,7 @@
   width: 300px;
   height: 130px; // Fixed height for uniform cards
   flex-shrink: 0;
+  align-self: center; // Stay vertically centered when card expands
   display: flex;
   align-items: center;
   justify-content: center;
@@ -229,9 +230,8 @@
 }
 
 .globoCard {
-  align-items: stretch; // Override default card styles
-
   .cardImage {
+    align-self: center; // Stay vertically centered when card expands
     background: none !important; // Remove white bg for bleed
     padding: 0 !important; // No padding - full bleed
     overflow: hidden;
