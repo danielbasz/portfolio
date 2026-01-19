@@ -10,7 +10,6 @@ import styles from './Hero.module.scss';
 export default function Hero({
   name,
   title,
-  bio,
   resumeUrl
 }: HeroProps) {
   const heroSectionRef = useParallax({ rate: -0.5 });

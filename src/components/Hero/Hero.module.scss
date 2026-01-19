@@ -156,6 +156,7 @@
   margin-top: 0.5rem;
   margin-bottom: 0;
   opacity: 0.9;
+  mix-blend-mode: overlay;
 
   // Calculate padding to align "D" in subtitle with "D" in title
   padding-left: calc(var(--title-font-size) * 1.72);
