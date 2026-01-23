@@ -9,7 +9,7 @@ interface ExperienceSectionProps {
   title: string;
   description?: string;
   experiences: Experience[];
-  type: 'work' | 'education';
+  type: 'work' | 'education' | 'misc';
   headerImages?: string[];
   backgroundColor?: 'light' | 'white' | 'transparent';
   className?: string;
@@ -94,9 +94,6 @@ export default function ExperienceSection({
           <ExperienceCard
             key={experience.id}
             experience={experience}
-            className={
-              experience.organization === 'Globo TV' ? 'globoCard' : ''
-            }
             isExpanded={expandedCardId === experience.id}
             onToggle={() => handleCardToggle(experience.id)}
           />

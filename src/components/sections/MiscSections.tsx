@@ -2,26 +2,26 @@ import { Experience } from '../../models';
 import { Container } from '../ui';
 import { ExperienceSection } from '.';
 
-interface EducationSectionsProps {
-  education: Experience[];
+interface MiscSectionsProps {
+  misc: Experience[];
 }
 
-export default function EducationSections({ education }: EducationSectionsProps) {
+export default function MiscSections({ misc }: MiscSectionsProps) {
   return (
     <Container background="dark">
       <div style={{ height: '60px' }} /> {/* Spacer to reveal background */}
-      <div id="education" style={{ position: 'relative', zIndex: 2 }}>
+      <div id="misc" style={{ position: 'relative', zIndex: 2 }}>
         <ExperienceSection
-          title="EDU"
+          title="Misc"
           showHeader={false}
-          experiences={education}
-          type="education"
+          experiences={misc}
+          type="misc"
           backgroundColor="transparent"
-          sectionZIndex={2}
-          backdropText="Education"
+          sectionZIndex={3}
+          backdropText="MISC"
           backdropOffsetPx={0}
           backdropRate={0}
-          backdropAlign="left"
+          backdropAlign="right"
         />
       </div>
     </Container>

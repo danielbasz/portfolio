@@ -2,9 +2,14 @@
 
 .footer {
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-  color: white;
+  color: white !important;
   padding: 60px 0 40px;
   text-align: center;
+
+  // Ensure all text and icons are white
+  * {
+    color: inherit;
+  }
 }
 
 .container {
@@ -26,6 +31,11 @@
     flex-direction: column;
     text-align: center;
   }
+
+  p {
+    color: white;
+    margin: 0;
+  }
 }
 
 .footerLinks {
@@ -40,15 +50,20 @@
 }
 
 .socialLink {
-  color: rgba(255, 255, 255, 0.8);
+  color: white !important;
   text-decoration: none;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
   
+  svg {
+    fill: currentColor;
+    color: inherit;
+  }
+  
   &:hover {
-    color: white;
+    color: rgba(255, 255, 255, 0.8) !important;
     transform: translateY(-2px);
   }
   

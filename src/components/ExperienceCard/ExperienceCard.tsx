@@ -27,6 +27,7 @@ export default function ExperienceCard({
     period,
     location,
     description,
+    roles,
     tags,
     image
   } = experience;
@@ -130,7 +131,7 @@ export default function ExperienceCard({
       <div className={styles.cardContent}>
         <h3>
           {title}
-          {experience.type === 'education' && experience.status === 'incomplete' && (
+          {(experience.type === 'education' || experience.type === 'misc') && experience.status === 'incomplete' && (
             <span className={styles.incomplete}>Incomplete</span>
           )}
         </h3>
@@ -139,18 +140,45 @@ export default function ExperienceCard({
           {location && ` • ${location}`}
         </p>
         
-        {/* Description - only visible when expanded */}
+        {/* Expanded content - timeline for work, description for education */}
         <div className={styles.descriptionWrapper}>
-          <p className={styles.description}>{description}</p>
-        </div>
-        
-        {/* Tags - only visible when expanded */}
-        <div className={styles.techStack}>
-          {tags.map((tag) => (
-            <span key={tag} className={styles.techTag}>
-              {tag}
-            </span>
-          ))}
+          {roles && roles.length > 0 ? (
+            <div className={styles.roleTimeline}>
+              {roles.map((role, index) => (
+                <div key={index} className={styles.roleEntry}>
+                  <div className={styles.roleMeta}>
+                    <span className={styles.roleDate}>{role.period}</span>
+                    <span className={styles.roleTitle}>{role.title}</span>
+                  </div>
+                  <ul className={styles.roleBullets}>
+                    {role.bullets.map((bullet, i) => (
+                      <li key={i}>{bullet}</li>
+                    ))}
+                  </ul>
+                  {/* Tags per role */}
+                  <div className={styles.roleTags}>
+                    {role.tags.map((tag) => (
+                      <span key={tag} className={styles.techTag}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <>
+              <p className={styles.description}>{description}</p>
+              {/* Tags for education entries */}
+              <div className={styles.techStack}>
+                {tags.map((tag) => (
+                  <span key={tag} className={styles.techTag}>
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </div>
       

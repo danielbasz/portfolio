@@ -91,21 +91,11 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-// Folder container - frosted glass effect with cards inside
+// Cards container - simple flex layout, no background box
 .projectsGrid {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  // Folder styling - matches the tab border-radius
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-radius: 24px;
-  padding: 24px;
-  box-shadow:
-    0 4px 20px rgba(0, 0, 0, 0.08),
-    0 1px 3px rgba(0, 0, 0, 0.04),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 // Ensure content sits above backdrop
@@ -115,50 +105,39 @@
   z-index: 0;
 }
 
-// Decorative backdrop word - positioned so its bottom touches the folder container top
+// Decorative backdrop word - floating gradient text overlapping cards by ~10%
 .backdropWord {
   position: absolute;
   // Align to the right edge of the inner container (max-width-centered) plus its padding
   right: calc(max((100vw - var(--container-max-width)) / 2, 0px) + 48px);
   left: auto;
-  // Position: top at 100px (where folder starts), then move UP by tab height
-  top: 100px;
-  transform: translateY(-100%); // move up by its own height so BOTTOM touches the folder top
-  // Smaller base scale
-  font-size: 80px;
+  // Position at card top (section padding), then move up by 90% of own height (10% overlap with card)
+  top: 100px; // matches section-padding on desktop
+  transform: translateY(-90%);
+  // Responsive font size based on viewport
+  font-size: clamp(50px, 8vw, 100px);
   font-weight: 800;
   line-height: 0.9;
   letter-spacing: -0.03em;
   white-space: nowrap;
-  // Tab styling - seamless connection to folder
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-radius: 20px 20px 0 0;
-  display: inline-block;
-  padding: 0.2em 0.35em 0 0.35em;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-bottom: none; // seamless connection to folder below
   text-transform: uppercase;
   pointer-events: none;
   user-select: none;
-  z-index: 1; // above folder container
+  z-index: 1;
   will-change: transform;
 
-  // Tablet - smaller
+  // Tablet - adjust position for smaller section padding (60px)
   @include tablet {
-    font-size: 60px;
-    border-radius: 16px 16px 0 0;
     right: 32px;
-    top: 80px; // section padding is smaller on tablet
+    top: 60px; // matches section-padding on tablet
+    transform: translateY(-90%); // maintain 10% overlap
   }
 
-  // Mobile - even smaller
+  // Mobile - adjust position for smaller section padding
   @include mobile {
-    font-size: 40px;
-    border-radius: 12px 12px 0 0;
     right: 24px;
-    top: 60px; // section padding is smaller on mobile
-    padding: 0.15em 0.3em 0 0.3em;
+    top: 60px; // matches section-padding on mobile
+    transform: translateY(-90%); // maintain 10% overlap
   }
 }
 
@@ -175,6 +154,22 @@
   @include mobile {
     left: 24px;
     right: auto;
+  }
+}
+
+// Right-aligned variant (explicit, same as default)
+.backdropWordRight {
+  left: auto;
+  right: calc(max((100vw - var(--container-max-width)) / 2, 0px) + 48px);
+
+  @include tablet {
+    right: 32px;
+    left: auto;
+  }
+
+  @include mobile {
+    right: 24px;
+    left: auto;
   }
 }
 

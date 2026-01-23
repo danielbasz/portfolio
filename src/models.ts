@@ -9,17 +9,26 @@ export interface SocialLink {
   icon?: string;
 }
 
+// Individual role within a company (for timeline display)
+export interface Role {
+  title: string;
+  period: string;
+  bullets: string[];
+  tags: string[];
+}
+
 export interface Experience {
   id: string;
   title: string;
   organization: string;
   period: string;
   location?: string;
-  description: string;
-  tags: string[];
+  description?: string;      // Used by education/misc entries
+  roles?: Role[];            // Used by work entries for timeline display
+  tags: string[];            // Top-level tags (used if no roles, or as fallback)
   image?: string;
   status?: 'completed' | 'incomplete';
-  type: 'work' | 'education';
+  type: 'work' | 'education' | 'misc';
 }
 
 export interface PersonalInfo {
@@ -36,6 +45,7 @@ export interface PortfolioData {
   socialLinks: SocialLink[];
   work: Experience[];
   education: Experience[];
+  misc: Experience[];
 }
 
 // Component Props Types

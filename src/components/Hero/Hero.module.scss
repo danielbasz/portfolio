@@ -76,6 +76,8 @@
       padding: 0 0.25em;
       display: inline-block;
       line-height: inherit;
+      // Round the right side to flow into circular buttons
+      border-radius: 0 calc(var(--title-font-size) / 2) calc(var(--title-font-size) / 2) 0;
 
       // Knockout text effect - video shows through the text!
       mix-blend-mode: screen;
@@ -101,9 +103,10 @@
 // Shared base styles for icon buttons
 %iconBtnBase {
   // Height matches the title's computed height (font-size * line-height of 1)
-  // Width equals height for a perfect square
+  // Width equals height for a perfect circle
   height: var(--title-font-size);
   width: var(--title-font-size);
+  border-radius: 50%; // Circle instead of square
   flex-shrink: 0;
   display: flex;
   align-items: center;

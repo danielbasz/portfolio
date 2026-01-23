@@ -4,6 +4,7 @@ import Footer from '../components/Footer/Footer';
 // import { ExperienceSection } from '../components/sections';
 import WorkSections from '../components/sections/WorkSections';
 import EducationSections from '../components/sections/EducationSections';
+import MiscSections from '../components/sections/MiscSections';
 import { portfolioData } from '../lib/data';
 // import { siteConfig } from '../config/site'; // TODO: Re-import when resume feature is added
 
@@ -25,6 +26,9 @@ export default function Home() {
 
       {/* Education Section (same choreography as Work transitions) */}
       <EducationSections education={portfolioData.education} />
+
+      {/* Misc Section - Certifications and incomplete education */}
+      <MiscSections misc={portfolioData.misc} />
 
       <Footer
         socialLinks={portfolioData.socialLinks}

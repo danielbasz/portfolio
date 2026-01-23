@@ -34,10 +34,10 @@ export default function Section({
 
       // Get scroll position and calculate gradient angle
       const scrollY = window.scrollY;
-      // Subtle angle shift: oscillates between 100deg and 170deg based on scroll
-      const angle = 135 + Math.sin(scrollY * 0.002) * 35;
-      // Shift the gradient position for color movement
-      const position = (scrollY * 0.1) % 200;
+      // Faster angle oscillation with wider range (90deg to 180deg)
+      const angle = 135 + Math.sin(scrollY * 0.006) * 45;
+      // 3x faster gradient position shift for more noticeable movement
+      const position = (scrollY * 0.3) % 200;
 
       textRef.current.style.background = `linear-gradient(${angle}deg, var(--primary-color) ${position}%, var(--secondary-color) ${position + 100}%)`;
       textRef.current.style.backgroundClip = 'text';
