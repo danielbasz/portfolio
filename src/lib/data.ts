@@ -68,8 +68,10 @@ export const portfolioData: PortfolioData = {
           title: "Web Content Editor II",
           period: "Jul 2019 - Aug 2020",
           bullets: [
-            "Developed custom Python automation for high-volume video content workflows, reducing manual effort by 70%",
-            "Engineered reusable templates in Adobe Premiere and After Effects, reducing daily production time from 40 to 6 minutes"
+            "Developed Python and JavaScript automation tools for high-volume short-form video content creation",
+            "Engineered reusable templates in Adobe Premiere and After Effects, enhancing production efficiency",
+            "Edited and delivered up to 25 minutes of daily short-form video content for Globo's Media Out of Home",
+            "Collaborated cross-functionally to ensure consistent file review and deployment"
           ],
           tags: ["Python", "JavaScript", "Adobe Premiere", "After Effects", "Automation"]
         },
@@ -77,8 +79,10 @@ export const portfolioData: PortfolioData = {
           title: "Cinema Editor I",
           period: "Jan 2017 - Jul 2019",
           bullets: [
-            "Edited series, feature films and short-form content under tight deadlines for Brazil's leading broadcast network",
-            "Collaborated cross-functionally to ensure consistency and quality across production pipeline"
+            "Edited series and feature films under tight deadlines for Brazil's leading broadcast network",
+            "Optimized longer media content for diverse television timeslots to ensure continuous programming",
+            "Spearheaded editing for Globoplay original content, reimagining TV shows for online media",
+            "Managed extensive media databases with strict naming conventions for efficient asset management"
           ],
           tags: ["Video Editing", "Broadcast", "Media Management", "Post-Production"]
         }
