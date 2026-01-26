@@ -4,7 +4,7 @@
   min-height: 80vh;
   display: flex;
   align-items: flex-end; // Position content at bottom
-  padding-bottom: 15vh; // Place content at lower third of viewport
+  padding-bottom: 7.5vh; // Tighter spacing - half of original 15vh
   background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
   color: white;
   position: relative;
@@ -14,12 +14,12 @@
   isolation: isolate;
 
   @include tablet {
-    padding-bottom: 12vh;
+    padding-bottom: 6vh;
   }
 
   @include mobile {
     min-height: 80vh;
-    padding-bottom: 10vh;
+    padding-bottom: 5vh;
   }
 
   // REMOVED: The gradient ::before overlay was blocking mix-blend-mode
@@ -152,14 +152,68 @@
   }
 }
 
+// CV Dropdown wrapper
+.cvDropdownWrapper {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+}
+
+// CV Dropdown menu
+.cvDropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  min-width: 140px;
+  z-index: 100;
+  animation: dropdownFadeIn 0.15s ease-out;
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cvDropdownItem {
+  display: block;
+  padding: 12px 16px;
+  color: #333;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background 0.15s ease;
+  white-space: nowrap;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  &:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+}
+
 .subtitle {
-  // Larger fluid typography for better readability
-  font-size: clamp(1.25rem, 2.5vw + 0.5rem, 2rem);
-  font-weight: 400;
+  // Larger fluid typography - bigger and bolder for multi-line display
+  font-size: clamp(1.5rem, 3vw + 0.5rem, 2.5rem);
+  font-weight: 600;
   margin-top: 0.5rem;
   margin-bottom: 0;
   opacity: 0.9;
   mix-blend-mode: overlay;
+  // Support multi-line text with \n in the string
+  white-space: pre-line;
+  line-height: 1.2;
 
   // Calculate padding to align "D" in subtitle with "D" in title
   padding-left: calc(var(--title-font-size) * 1.72);

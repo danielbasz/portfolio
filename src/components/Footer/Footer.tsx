@@ -1,6 +1,6 @@
 import { FooterProps } from '../../models';
 import styles from './Footer.module.scss';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
 
 export default function Footer({ socialLinks, copyrightText }: FooterProps) {
   return (
@@ -11,7 +11,7 @@ export default function Footer({ socialLinks, copyrightText }: FooterProps) {
           <div className={styles.footerLinks}>
             {socialLinks.map((link) => {
               const key = (link.icon || link.name).toLowerCase();
-              const Icon = key.includes('github') ? FaGithub : key.includes('linkedin') ? FaLinkedin : null;
+              const Icon = key.includes('github') ? FaGithub : key.includes('linkedin') ? FaLinkedin : key.includes('instagram') ? FaInstagram : null;
               return (
                 <a
                   key={link.name}

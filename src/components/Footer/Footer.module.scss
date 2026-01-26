@@ -5,6 +5,9 @@
   color: white !important;
   padding: 60px 0 40px;
   text-align: center;
+  // Ensure footer sits above sections
+  position: relative;
+  z-index: 10;
 
   // Ensure all text and icons are white
   * {

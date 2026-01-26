@@ -6,7 +6,7 @@ export const portfolioData: PortfolioData = {
   resumeUrl: siteConfig.contact.resumeUrl,
   personal: {
     name: siteConfig.author.name,
-    title: "Development & Multimedia",
+    title: "Development &\nMultimedia &\nDesign",
     bio: siteConfig.author.bio,
     email: siteConfig.author.email,
     profileImage: siteConfig.author.profileImage
@@ -21,6 +21,11 @@ export const portfolioData: PortfolioData = {
       name: "GitHub",
       url: siteConfig.social.github,
       icon: "github"
+    },
+    {
+      name: "Instagram",
+      url: siteConfig.social.instagram,
+      icon: "instagram"
     }
   ],
   work: [
@@ -59,7 +64,7 @@ export const portfolioData: PortfolioData = {
     },
     {
       id: "globo-film-editor",
-      title: "Film Editor",
+      title: "Film and Web Content Editor",
       organization: "Globo TV",
       period: "Jan 2017 - Aug 2020",
       location: "Rio de Janeiro, Brazil",
@@ -68,10 +73,10 @@ export const portfolioData: PortfolioData = {
           title: "Web Content Editor II",
           period: "Jul 2019 - Aug 2020",
           bullets: [
-            "Developed Python and JavaScript automation tools for high-volume short-form video content creation",
-            "Engineered reusable templates in Adobe Premiere and After Effects, enhancing production efficiency",
-            "Edited and delivered up to 25 minutes of daily short-form video content for Globo's Media Out of Home",
-            "Collaborated cross-functionally to ensure consistent file review and deployment"
+            "Developed Python and JavaScript automation tools for high-volume video workflows, reducing manual effort in half",
+            "Engineered reusable templates in Adobe Premiere and After Effects, standardizing production across team",
+            "Edited and delivered up to 25 minutes of daily short-form content for Globo's out-of-home media division",
+            "Collaborated cross-functionally on content strategy, file review, and deployment"
           ],
           tags: ["Python", "JavaScript", "Adobe Premiere", "After Effects", "Automation"]
         },
@@ -79,10 +84,10 @@ export const portfolioData: PortfolioData = {
           title: "Cinema Editor I",
           period: "Jan 2017 - Jul 2019",
           bullets: [
-            "Edited series and feature films under tight deadlines for Brazil's leading broadcast network",
-            "Optimized longer media content for diverse television timeslots to ensure continuous programming",
-            "Spearheaded editing for Globoplay original content, reimagining TV shows for online media",
-            "Managed extensive media databases with strict naming conventions for efficient asset management"
+            "Edited series and feature films for Brazil's largest broadcast network with millions of daily viewers",
+            "Spearheaded editing for Globoplay original content, adapting broadcast shows for streaming platform",
+            "Optimized content for diverse television timeslots and platform-specific formatting requirements",
+            "Managed extensive media databases with strict naming conventions for efficient asset organization"
           ],
           tags: ["Video Editing", "Broadcast", "Media Management", "Post-Production"]
         }
@@ -93,7 +98,7 @@ export const portfolioData: PortfolioData = {
     },
     {
       id: "andarilho-technical-director",
-      title: "Technical Director",
+      title: "Co-Founder & Technical Director",
       organization: "Andarilho Filmes",
       period: "Jan 2012 - Present",
       location: "Rio de Janeiro, Brazil",
@@ -102,14 +107,17 @@ export const portfolioData: PortfolioData = {
           title: "Technical Director / Co-Founder",
           period: "Jan 2012 - Present",
           bullets: [
-            "Co-founded a film production company with two partners, directing technical operations including IT and Post-Production",
-            "Produced generative AI assets for theatrical production pitches displayed to prospective investors",
-            "Managed IT and camera equipment infrastructure, optimizing efficiency and resource allocation"
+            "Co-founded film production company, engaging with creative, technical, and business operations",
+            "Company now produces award-winning musical theatre (Elvis, Bonnie & Clyde, Last Five Years)",
+            "Currently consulting remotely on web presence and AI-driven content strategy, producing generative AI films and visual assets for theatrical production pitches to cultural investors",
+            "Directed cinematography, editing, and post-production for narrative and documentary content",
+            "Managed IT infrastructure, equipment, and media storage across multiple concurrent projects",
+            "Trained team in camera operation and editing, enhancing capabilities and production quality"
           ],
-          tags: ["Film Production", "Generative AI", "IT Management", "Cinematography", "Business Management"]
+          tags: ["Editing", "Cinematography", "Post-Production", "Generative AI", "IT Management"]
         }
       ],
-      tags: ["Film Production", "IT Management", "Generative AI"],
+      tags: ["Editing", "Cinematography", "Post-Production", "Generative AI", "IT Management"],
       image: "assets/andarilho-logo.png",
       type: "work"
     }

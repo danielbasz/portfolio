@@ -18,7 +18,8 @@ export const siteConfig = {
 
   social: {
     linkedin: "https://linkedin.com/in/danporto",
-    github: "https://github.com/danielbasz"
+    github: "https://github.com/danielbasz",
+    instagram: "https://instagram.com/danielbasz"
   },
 
   deployment: {

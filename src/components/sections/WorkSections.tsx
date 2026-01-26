@@ -19,6 +19,7 @@ export default function WorkSections({ work }: WorkSectionsProps) {
           backdropText="WORK"
           backdropOffsetPx={0}
           backdropRate={0}
+          backdropAlign="left"
         />
       </div>
     </Container>

@@ -53,13 +53,13 @@
       0 8px 24px rgba(0, 0, 0, 0.12);
     
     .descriptionWrapper {
-      max-height: 800px; // Increased for timeline content
+      max-height: 2000px; // Increased significantly for long timeline content on mobile
       opacity: 1;
       margin-bottom: 16px;
     }
 
     .techStack {
-      max-height: 200px;
+      max-height: 300px; // Increased for more tags
       opacity: 1;
       margin-top: 12px;
     }

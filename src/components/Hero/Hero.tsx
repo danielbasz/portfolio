@@ -1,19 +1,42 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { HeroProps } from '../../models';
 import { useParallax } from '../../hooks';
 import VideoBackground from '../VideoBackground/VideoBackground';
 import ContactModal from '../ui/ContactModal';
 import styles from './Hero.module.scss';
 
+const CV_OPTIONS = [
+  { label: 'Developer', url: 'assets/daniel-porto-resume.pdf', filename: 'Daniel-Porto-Resume-Developer.pdf' },
+  { label: 'Film Editor', url: 'assets/daniel-porto-resume-video.pdf', filename: 'Daniel-Porto-Resume-Film-Editor.pdf' },
+];
+
 export default function Hero({
   name,
   title,
-  resumeUrl
 }: HeroProps) {
   const heroSectionRef = useParallax({ rate: -0.5 });
   const [isContactOpen, setIsContactOpen] = useState(false);
+  const [isCvDropdownOpen, setIsCvDropdownOpen] = useState(false);
+  const cvDropdownRef = useRef<HTMLDivElement>(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (cvDropdownRef.current && !cvDropdownRef.current.contains(event.target as Node)) {
+        setIsCvDropdownOpen(false);
+      }
+    };
+
+    if (isCvDropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isCvDropdownOpen]);
 
   return (
     <>
@@ -39,17 +62,33 @@ export default function Hero({
                       <path d="M22 6L12 13L2 6" />
                     </svg>
                   </button>
-                  {resumeUrl && (
-                    <a
-                      href={resumeUrl}
+                  <div className={styles.cvDropdownWrapper} ref={cvDropdownRef}>
+                    <button
+                      onClick={() => setIsCvDropdownOpen(!isCvDropdownOpen)}
                       className={styles.iconBtnOutline}
-                      download="Daniel-Porto-Resume.pdf"
                       aria-label="Download CV"
                       title="Download CV"
+                      aria-expanded={isCvDropdownOpen}
+                      aria-haspopup="true"
                     >
                       CV
-                    </a>
-                  )}
+                    </button>
+                    {isCvDropdownOpen && (
+                      <div className={styles.cvDropdown}>
+                        {CV_OPTIONS.map((option) => (
+                          <a
+                            key={option.label}
+                            href={option.url}
+                            download={option.filename}
+                            className={styles.cvDropdownItem}
+                            onClick={() => setIsCvDropdownOpen(false)}
+                          >
+                            {option.label}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
               <p className={styles.subtitle}>{title}</p>

@@ -3,6 +3,7 @@ import Footer from '../components/Footer/Footer';
 // import { Container } from '../components/ui';
 // import { ExperienceSection } from '../components/sections';
 import WorkSections from '../components/sections/WorkSections';
+import { DemoReelSection } from '../components/sections';
 import EducationSections from '../components/sections/EducationSections';
 import MiscSections from '../components/sections/MiscSections';
 import { portfolioData } from '../lib/data';
@@ -24,6 +25,9 @@ export default function Home() {
       {/* Work Section - Combined with transitioning background */}
       <WorkSections work={portfolioData.work} />
 
+      {/* Demo Reel Section */}
+      <DemoReelSection videoId="WIard9Hzevo" />
+
       {/* Education Section (same choreography as Work transitions) */}
       <EducationSections education={portfolioData.education} />
 
@@ -32,7 +36,7 @@ export default function Home() {
 
       <Footer
         socialLinks={portfolioData.socialLinks}
-        copyrightText="© 2025 Daniel Porto."
+        copyrightText="© 2026 Daniel Porto."
       />
     </main>
   );
